@@ -3,9 +3,13 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
+    "generate:css": "npx tailwindcss -o ./app/tailwind.css",
+    "build": "run-s build:*",
+    "build:css": "npm run generate:css -- --minify",
+    "build:remix": "remix build",
     "deploy": "deployctl deploy --prod --include=build,public --project=senarai ./build/index.js",
     "dev": "remix build && run-p dev:*",
+    "dev:css": "npm run generate:css -- --watch",
     "dev:deno": "cross-env NODE_ENV=development deno run --unstable --watch --allow-net --allow-read --allow-env ./build/index.js",
     "dev:remix": "remix watch",
     "fetch": "node --require esbuild-register app/scripts/fetch-db.ts",
@@ -27,8 +31,9 @@
     "cross-fetch": "3.1.5",
     "esbuild": "0.14.42",
     "esbuild-register": "3.3.2",
-    "npm-run-all": "^4.1.5",
-    "ora": "6.1.0"
+    "npm-run-all": "4.1.5",
+    "ora": "6.1.0",
+    "tailwindcss": "3.0.24"
   },
   "engines": {
     "node": ">=14"

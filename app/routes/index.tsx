@@ -11,7 +11,7 @@ export default function Index() {
             <details open={link}>
               <summary>{nama}</summary>
               {link ? (
-                <a target="_blank" rel="noreferrer noopener" href={link}>
+                <a target="_blank" rel="noreferrer noopener" href={link} className="underline">
                   {ringkasan}
                 </a>
               ) : (
