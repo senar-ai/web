@@ -25,8 +25,10 @@ export const itemReducer = (row: string[]) => {
     let cellValue = row[col.index]
     if (['link'].includes(colName)) {
       cellValue = extractGoogleQuery(cellValue)
-    } else if (colName == 'ringkasan') {
+    } else if (colName === 'ringkasan') {
       cellValue = stripTags(cellValue)
+    } else if (['desa', 'kecamatan', 'kabupaten', 'provinsi', 'negara', 'benua'].includes(colName)) {
+      cellValue = cellValue.replace('&amp;', '&')
     }
     prev[colName] = cellValue
     if (colName == 'nama') {

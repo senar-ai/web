@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import ora from 'ora'
 import { load } from 'cheerio'
 import fetch from 'cross-fetch'
-import { allIsEmptyString, getKebabCase, toSecond } from '../utils/string'
+import { isAllEmptyString, getKebabCase, toSecond } from '../utils/string'
 import { itemReducer } from '../utils/item'
 
 export async function fetchDatabase() {
@@ -51,7 +51,7 @@ export async function fetchDatabase() {
           ]
         })
         .toArray()
-        .filter((row) => !allIsEmptyString(row))
+        .filter((row) => !isAllEmptyString(row))
 
       return {
         id: sheetId,

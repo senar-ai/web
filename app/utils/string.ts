@@ -61,7 +61,7 @@ export function getKebabCase(str?: string): string {
  * @returns `true` if all strings in `array` are empty strings,
  * `false` otherwise
  */
-export function allIsEmptyString(array: string[]) {
+export function isAllEmptyString(array: string[]) {
   return array.every((str) => !str.length)
 }
 
