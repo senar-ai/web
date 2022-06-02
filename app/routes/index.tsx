@@ -1,34 +1,23 @@
-import * as React from "react";
+import * as React from 'react'
+import activities from '../model/activities'
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
+    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
+      <h1>Senarai belajar skill abad 21 untuk anak-anak</h1>
       <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
+        {activities.map(({ nama, link }) => (
+          <li key={nama}>
+            {link ? (
+              <a target="_blank" rel="noreferrer noopener" href={link}>
+                {nama}
+              </a>
+            ) : (
+              <div>{nama} </div>
+            )}
+          </li>
+        ))}
       </ul>
     </div>
-  );
+  )
 }
