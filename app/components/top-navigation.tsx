@@ -27,7 +27,10 @@ export function TopNavigation() {
 
   return (
     <div className="bg-indigo-600 pb-32">
-      <Disclosure as="nav" className="bg-indigo-600 border-b border-indigo-300 border-opacity-25 lg:border-none">
+      <Disclosure
+        as="nav"
+        className="bg-indigo-600 border-b border-indigo-300 border-opacity-25 lg:border-none fixed w-screen z-10"
+      >
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
@@ -130,7 +133,7 @@ export function TopNavigation() {
           </>
         )}
       </Disclosure>
-      <header className="py-10">
+      <header className="translate-y-11 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-white">{title}</h1>
         </div>
