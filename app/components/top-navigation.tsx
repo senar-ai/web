@@ -117,15 +117,23 @@ export function TopNavigation() {
                 {navigation.map((item) => (
                   <Disclosure.Button
                     key={item.name}
-                    as="a"
-                    href={item.href}
+                    as={item.external ? 'a' : Link}
+                    href={item.external ? item.href : undefined}
+                    to={item.external ? undefined : item.href}
                     className={classNames(
-                      item.current ? 'bg-indigo-700 text-white' : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
+                      item.href === currentPathname
+                        ? 'bg-indigo-700 text-white'
+                        : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                       'block rounded-md py-2 px-3 text-base font-medium'
                     )}
-                    aria-current={item.current ? 'page' : undefined}
+                    aria-current={item.href === currentPathname ? 'page' : undefined}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
                   >
                     {item.name}
+                    {item.external ? (
+                      <ExternalLinkIcon className="ml-2 h-4 w-4 inline -mt-1" aria-hiden="true" />
+                    ) : null}
                   </Disclosure.Button>
                 ))}
               </div>
