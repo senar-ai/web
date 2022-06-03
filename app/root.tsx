@@ -2,7 +2,6 @@ import type { MetaFunction, LinksFunction } from '@remix-run/deno'
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import * as React from 'react'
 
-// FIXME: TS error
 import styles from './tailwind.css'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
