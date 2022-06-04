@@ -7,6 +7,7 @@ import {
   faGraduationCap,
   faBriefcase,
   faFamily,
+  faPeopleGroup,
 } from '@fortawesome/pro-duotone-svg-icons'
 import {
   faChildReaching as falChildReaching,
@@ -30,8 +31,8 @@ export const categories: Categories = [
   {
     title: 'PAUD',
     slug: 'paud',
+    icon: falChildReaching,
     description: 'Pendidikan Anak Usia Dini',
-    icon: faChildReaching,
     iconForeground: 'text-teal-700',
     iconBackground: 'bg-teal-50',
   },
@@ -39,7 +40,7 @@ export const categories: Categories = [
     title: 'PAUD ke atas',
     slug: 'paud-ke-atas',
     description: 'Usia tiga tahun ke atas',
-    icon: falChildReaching,
+    icon: faChildReaching,
     iconForeground: 'text-teal-700',
     iconBackground: 'bg-teal-50',
   },
@@ -47,7 +48,7 @@ export const categories: Categories = [
     title: 'SD',
     slug: 'sd',
     description: 'Sekolah Dasar',
-    icon: faSchool,
+    icon: falSchool,
     iconForeground: 'text-purple-700',
     iconBackground: 'bg-purple-50',
   },
@@ -55,7 +56,7 @@ export const categories: Categories = [
     title: 'SD ke atas',
     slug: 'sd-ke-atas',
     description: 'Usia enam tahun ke atas',
-    icon: falSchool,
+    icon: faSchool,
     iconForeground: 'text-purple-700',
     iconBackground: 'bg-purple-50',
   },
@@ -63,7 +64,7 @@ export const categories: Categories = [
     title: 'SMP',
     slug: 'smp',
     description: 'Sekolah Menengah Pertama',
-    icon: faSchoolFlag,
+    icon: falSchoolFlag,
     iconForeground: 'text-sky-700',
     iconBackground: 'bg-sky-50',
   },
@@ -71,7 +72,7 @@ export const categories: Categories = [
     title: 'SMP ke atas',
     slug: 'smp-ke-atas',
     description: 'Usia 12 tahun ke atas',
-    icon: falSchoolFlag,
+    icon: faSchoolFlag,
     iconForeground: 'text-sky-700',
     iconBackground: 'bg-sky-50',
   },
@@ -79,7 +80,7 @@ export const categories: Categories = [
     title: 'SMA',
     slug: 'sma',
     description: 'Sekolah Menengah Atas',
-    icon: faBuildingColumns,
+    icon: falBuildingColumns,
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
   },
@@ -87,7 +88,7 @@ export const categories: Categories = [
     title: 'SMA ke atas',
     slug: 'sma-ke-atas',
     description: 'Usia 15 tahun ke atas',
-    icon: falBuildingColumns,
+    icon: faBuildingColumns,
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
   },
@@ -111,8 +112,21 @@ export const categories: Categories = [
     title: 'Semua Usia',
     slug: 'semua-usia',
     description: 'Untuk semua kalangan',
-    icon: faFamily,
+    icon: faPeopleGroup,
     iconForeground: 'text-lime-700',
     iconBackground: 'bg-lime-50',
   },
+  {
+    title: 'For Parents',
+    slug: 'for-parents',
+    description: 'Untuk dipelajari oleh orang tua',
+    icon: faFamily,
+    iconForeground: 'text-emerald-700',
+    iconBackground: 'bg-emerald-50',
+  },
 ]
+
+export const categoriesRecord = categories.reduce((acc, category) => {
+  acc[category.title] = category
+  return acc
+}, {} as Record<string, Category>)
