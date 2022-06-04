@@ -21,8 +21,8 @@ export function ActionCards({ categories }: { categories: Categories }) {
           <div>
             <span
               className={classNames(
-                `bg-${category.color}-50`,
-                `text-${category.color}-700`,
+                category.iconBackground,
+                category.iconForeground,
                 'rounded-lg inline-flex p-3 ring-4 ring-white'
               )}
             >
