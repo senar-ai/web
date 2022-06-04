@@ -67,15 +67,24 @@ export const Card: React.FC<CardProps> = ({
             </div>
           ) : null}
           <div className="-ml-px w-0 flex-1 flex">
-            <a
-              href={link.startsWith('http') ? link : `http://${link}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
-            >
-              <span className="mr-3">{cta}</span>
-              <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-5 h-5 text-gray-400" aria-hidden="true" />
-            </a>
+            {link && cta ? (
+              <a
+                href={link.startsWith('http') ? link : `http://${link}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
+              >
+                <span className="mr-3">{cta}</span>
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-5 h-5 text-gray-400" aria-hidden="true" />
+              </a>
+            ) : (
+              <button
+                disabled
+                className="cursor-not-allowed relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
+              >
+                <span>Belum ada pranala</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
