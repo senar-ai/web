@@ -1,7 +1,9 @@
+import { useOutletContext } from '@remix-run/react'
 import * as React from 'react'
 import { ActivitesGrid } from '../../components/activities-grid'
-import { activities } from '../../model/activities'
+import { ActivitiesContextType } from '../activities'
 
-export default function Index() {
+export default function ActivitiesIndex() {
+  const { activities } = useOutletContext<ActivitiesContextType>()
   return <ActivitesGrid activities={activities} />
 }

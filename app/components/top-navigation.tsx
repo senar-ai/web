@@ -3,6 +3,7 @@ import { Disclosure } from '@headlessui/react'
 import { Link, useMatches } from '@remix-run/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faBars, faMagnifyingGlass, faX } from '@fortawesome/pro-duotone-svg-icons'
+import { classNames } from '../utils/class-names'
 
 const navigation = [
   { name: 'Senarai', href: '/' },
@@ -16,11 +17,12 @@ const navigation = [
   { name: 'Database Mentah', href: 'https://zainf.dev/senarai-db', external: true },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+export type TopNavigationProps = {
+  keyword: string
+  setKeyword: (keyword: string) => void
 }
 
-export function TopNavigation() {
+export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigationProps) => {
   const matches = useMatches()
   const currentPathname = matches[1]?.pathname
   const title = navigation.find(({ href }) => href === currentPathname)?.name
@@ -98,6 +100,8 @@ export function TopNavigation() {
                         placeholder="Cari"
                         type="search"
                         name="search"
+                        value={props.keyword}
+                        onChange={(e) => props.setKeyword(e.target.value)}
                       />
                     </div>
                   </div>
