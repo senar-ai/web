@@ -6,10 +6,26 @@ import styles from './tailwind.css'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
 
+const title = 'Senarai'
+const description = 'Senarai Belajar Skill Abad 21'
+const image = 'https://senar.ai/images/preview.png'
+
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'Senarai belajar skill abad 21 untuk anak-anak',
+  title,
+  description,
   viewport: 'width=device-width,initial-scale=1',
+  'og:title': title,
+  'og:description': description,
+  'og:image:width': '1200',
+  'og:image:height': '630',
+  'og:image': image,
+  'twitter:image': image,
+  'twitter:card': 'summary_large_image',
+  'twitter:creator': '@ainunnajib',
+  'twitter:site': '@ainunnajib',
+  'twitter:title': title,
+  'twitter:description': description,
 })
 
 export default function App() {

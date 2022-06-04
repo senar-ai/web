@@ -105,7 +105,7 @@ export const Card: React.FC<CardProps> = ({
                 disabled
                 className="cursor-not-allowed relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
               >
-                <span>Belum ada pranala</span>
+                <span>Belum ada link</span>
               </button>
             )}
           </div>
