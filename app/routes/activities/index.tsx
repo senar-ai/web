@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CardsList } from '../../components/cards-list'
 import { TopNavigation } from '../../components/top-navigation'
-import activities from '../../model/activities'
+import { activities } from '../../model/activities'
 
 export default function Index() {
   return (

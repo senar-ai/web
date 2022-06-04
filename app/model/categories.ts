@@ -26,7 +26,7 @@ export type Category = {
   iconBackground: string
 }
 
-const categories: Categories = [
+export const categories: Categories = [
   {
     title: 'PAUD',
     slug: 'paud',
@@ -116,5 +116,3 @@ const categories: Categories = [
     iconBackground: 'bg-lime-50',
   },
 ]
-
-export default categories

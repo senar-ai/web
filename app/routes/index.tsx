@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ActionCards } from '../components/action-cards'
 import { TopNavigation } from '../components/top-navigation'
-import categories from '../model/categories'
+import { categories } from '../model/categories'
 
 export default function Example() {
   return (

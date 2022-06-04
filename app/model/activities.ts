@@ -18,6 +18,4 @@ export type Activity = {
   readonly image?: string
 }
 
-const activities = database[0].data as unknown as Activities
-
-export default activities
+export const activities = database[0].data as unknown as Activities
