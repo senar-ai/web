@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { CardsList } from '../../components/cards-list'
+import { ActivitesGrid } from '../../components/activities-grid'
 import { activities } from '../../model/activities'
 
 export default function Index() {
-  return <CardsList activities={activities} />
+  return <ActivitesGrid activities={activities} />
 }
