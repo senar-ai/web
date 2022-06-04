@@ -10,6 +10,9 @@ import { senaraiForm } from './top-navigation'
 
 export function ActivitesGrid({ activities }: { activities: Activity[] }) {
   const matches = useMatches()
+  const categorySlug = matches[matches.length - 1].params?.categorySlug
+  const category = getCategoryByCategorySlug(categorySlug)
+  const addNewActivityLink = `${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(category.title)}`
   if (activities.length) {
     return (
       <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -37,11 +40,19 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
             />
           )
         })}
+        <Card
+          name="Tambah Aktivitas Baru"
+          description={`Usulkan aktivitas baru untuk kategori ${category.title}`}
+          cta="Usulkan"
+          category={category.title}
+          link={addNewActivityLink}
+          icon={faGrid2Plus}
+          foregroundColor={category.iconForeground}
+          backgroundColor={category.iconBackground}
+        />
       </ul>
     )
   } else {
-    const categorySlug = matches[matches.length - 1].params?.categorySlug
-    const category = getCategoryByCategorySlug(categorySlug)
     return (
       <div className="text-center bg-white rounded-lg shadow px-5 py-6 sm:px-6">
         <div
@@ -59,7 +70,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
         </p>
         <div className="mt-6">
           <a
-            href={`${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(category.title)}`}
+            href={addNewActivityLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
