@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { ActionCards } from '../components/action-cards'
 import { TopNavigation } from '../components/top-navigation'
+import categories from '../model/categories'
 
 export default function Example() {
   return (
@@ -10,7 +11,7 @@ export default function Example() {
       <main className="-mt-24">
         <div className="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
           {/* Replace with your content */}
-          <ActionCards />
+          <ActionCards categories={categories} />
           {/* /End replace */}
         </div>
       </main>

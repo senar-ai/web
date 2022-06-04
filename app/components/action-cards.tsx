@@ -1,137 +1,32 @@
 import * as React from 'react'
 import { classNames } from '../utils/class-names'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faChildReaching,
-  faSchool,
-  faSchoolFlag,
-  faBuildingColumns,
-  faGraduationCap,
-  faBriefcase,
-  faFamily,
-} from '@fortawesome/pro-duotone-svg-icons'
-import {
-  faChildReaching as fatChildReaching,
-  faSchool as fatSchool,
-  faSchoolFlag as fatSchoolFlag,
-  faBuildingColumns as fatBuildingColumns,
-} from '@fortawesome/pro-thin-svg-icons'
 import { Link } from '@remix-run/react'
+import { Categories } from '../model/categories'
 
-const actions = [
-  {
-    title: 'PAUD',
-    description: 'Pendidikan Anak Usia Dini',
-    href: '#',
-    icon: faChildReaching,
-    iconForeground: 'text-teal-700',
-    iconBackground: 'bg-teal-50',
-  },
-  {
-    title: 'PAUD ke atas',
-    description: 'Usia tiga tahun ke atas',
-    href: '#',
-    icon: fatChildReaching,
-    iconForeground: 'text-teal-700',
-    iconBackground: 'bg-teal-50',
-  },
-  {
-    title: 'SD',
-    description: 'Sekolah Dasar',
-    href: '#',
-    icon: faSchool,
-    iconForeground: 'text-purple-700',
-    iconBackground: 'bg-purple-50',
-  },
-  {
-    title: 'SD ke atas',
-    description: 'Usia enam tahun ke atas',
-    href: '#',
-    icon: fatSchool,
-    iconForeground: 'text-purple-700',
-    iconBackground: 'bg-purple-50',
-  },
-  {
-    title: 'SMP',
-    description: 'Sekolah Menengah Pertama',
-    href: '#',
-    icon: faSchoolFlag,
-    iconForeground: 'text-sky-700',
-    iconBackground: 'bg-sky-50',
-  },
-  {
-    title: 'SMP ke atas',
-    description: 'Usia 12 tahun ke atas',
-    href: '#',
-    icon: fatSchoolFlag,
-    iconForeground: 'text-sky-700',
-    iconBackground: 'bg-sky-50',
-  },
-  {
-    title: 'SMA',
-    description: 'Sekolah Menengah Atas',
-    href: '#',
-    icon: faBuildingColumns,
-    iconForeground: 'text-yellow-700',
-    iconBackground: 'bg-yellow-50',
-  },
-  {
-    title: 'SMA ke atas',
-    description: 'Usia 15 tahun ke atas',
-    href: '#',
-    icon: fatBuildingColumns,
-    iconForeground: 'text-yellow-700',
-    iconBackground: 'bg-yellow-50',
-  },
-  {
-    title: 'Kuliah',
-    description: 'Perguruan Tinggi',
-    href: '#',
-    icon: faGraduationCap,
-    iconForeground: 'text-indigo-700',
-    iconBackground: 'bg-indigo-50',
-  },
-  {
-    title: 'Profesional',
-    description: 'Pekerja Profesional',
-    href: '#',
-    icon: faBriefcase,
-    iconForeground: 'text-rose-700',
-    iconBackground: 'bg-rose-50',
-  },
-  {
-    title: 'Semua Usia',
-    description: 'Untuk semua kalangan',
-    href: '#',
-    icon: faFamily,
-    iconForeground: 'text-lime-700',
-    iconBackground: 'bg-lime-50',
-  },
-]
-
-export function ActionCards() {
+export function ActionCards({ categories }: { categories: Categories }) {
   return (
     <div className="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-3 sm:gap-px">
-      {actions.map((action, actionIdx) => (
+      {categories.map((category, categoryIdx) => (
         <div
-          key={action.title}
+          key={category.title}
           className={classNames(
-            actionIdx === 0 ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '',
-            actionIdx === 1 ? 'sm:rounded-tr-lg' : '',
-            actionIdx === actions.length - 2 ? 'sm:rounded-bl-lg' : '',
-            actionIdx === actions.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '',
+            categoryIdx === 0 ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '',
+            categoryIdx === 1 ? 'sm:rounded-tr-lg' : '',
+            categoryIdx === categories.length - 2 ? 'sm:rounded-bl-lg' : '',
+            categoryIdx === categories.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '',
             'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
           )}
         >
           <div>
             <span
               className={classNames(
-                action.iconBackground,
-                action.iconForeground,
+                `bg-${category.color}-50`,
+                `text-${category.color}-700`,
                 'rounded-lg inline-flex p-3 ring-4 ring-white'
               )}
             >
-              <FontAwesomeIcon icon={action.icon} className="h-6 w-6" />
+              <FontAwesomeIcon icon={category.icon} className="h-6 w-6" />
             </span>
           </div>
           <div className="mt-8">
@@ -139,11 +34,11 @@ export function ActionCards() {
               <Link to="/activities" className="focus:outline-none">
                 {/* Extend touch target to entire panel */}
                 <span className="absolute inset-0" aria-hidden="true" />
-                {action.title}
+                {category.title}
               </Link>
             </h3>
             <p className="mt-2 text-sm text-gray-500">
-              {action.description ??
+              {category.description ??
                 'Doloribus dolores nostrum quia qui natus officia quod et dolorem. Sit repellendus qui ut at blanditiis et quo et molestiae.'}
             </p>
           </div>
