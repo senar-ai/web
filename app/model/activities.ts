@@ -15,6 +15,7 @@ export type Activity = {
   readonly provinsi: string
   readonly negara: string
   readonly benua: string
+  readonly image?: string
 }
 
 const activities = database[0].data as unknown as Activities

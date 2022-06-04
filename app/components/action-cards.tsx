@@ -16,6 +16,7 @@ import {
   faSchoolFlag as fatSchoolFlag,
   faBuildingColumns as fatBuildingColumns,
 } from '@fortawesome/pro-thin-svg-icons'
+import { Link } from '@remix-run/react'
 
 const actions = [
   {
@@ -135,11 +136,11 @@ export function ActionCards() {
           </div>
           <div className="mt-8">
             <h3 className="text-lg font-medium">
-              <a href={action.href} className="focus:outline-none">
+              <Link to="/activities" className="focus:outline-none">
                 {/* Extend touch target to entire panel */}
                 <span className="absolute inset-0" aria-hidden="true" />
                 {action.title}
-              </a>
+              </Link>
             </h3>
             <p className="mt-2 text-sm text-gray-500">
               {action.description ??
