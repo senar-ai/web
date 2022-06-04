@@ -13,7 +13,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
   if (activities.length) {
     return (
       <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {activities.map(({ id, nama, link, ringkasan, image, categorySlug }) => {
+        {activities.map(({ id, nama, link, ringkasan, image, usia, categorySlug }) => {
           const { icon, iconForeground, iconBackground, title } = getCategoryByCategorySlug(categorySlug)
           return (
             <Card
@@ -22,7 +22,11 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
               cta="Kunjungi"
               link={link}
               secondaryCta="Koreksi"
-              // secondaryLink="#" TODO: compose a URL to the Google Form with prefilled data
+              secondaryLink={`${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(
+                usia
+              )}&entry.105812429=${encodeURIComponent(nama)}&entry.1084985767=${encodeURIComponent(
+                ringkasan
+              )}&entry.1503344235=${encodeURIComponent(link)}`}
               description={ringkasan}
               image={image}
               category={title}
@@ -55,7 +59,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
         </p>
         <div className="mt-6">
           <a
-            href={senaraiForm}
+            href={`${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(category.title)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
