@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Disclosure } from '@headlessui/react'
-import { SearchIcon } from '@heroicons/react/solid'
-import { ExternalLinkIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link, useMatches } from '@remix-run/react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowUpRightFromSquare, faBars, faMagnifyingGlass, faX } from '@fortawesome/pro-duotone-svg-icons'
 
 const navigation = [
   { name: 'Senarai', href: '/', current: true },
@@ -58,7 +58,11 @@ export function TopNavigation() {
                             rel="noopener noreferrer"
                           >
                             {item.name}
-                            <ExternalLinkIcon className="ml-2 h-4 w-4 inline -mt-1" aria-hiden="true" />
+                            <FontAwesomeIcon
+                              icon={faArrowUpRightFromSquare}
+                              className="ml-2 h-4 w-4 inline -mt-1"
+                              aria-hidden="true"
+                            />
                           </a>
                         ) : (
                           <Link
@@ -86,7 +90,7 @@ export function TopNavigation() {
                     </label>
                     <div className="relative text-gray-400 focus-within:text-gray-600">
                       <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                        <SearchIcon className="h-5 w-5" aria-hidden="true" />
+                        <FontAwesomeIcon icon={faMagnifyingGlass} className="h-5 w-5" aria-hidden="true" />
                       </div>
                       <input
                         id="search"
@@ -103,9 +107,9 @@ export function TopNavigation() {
                   <Disclosure.Button className="bg-indigo-600 p-2 rounded-md inline-flex items-center justify-center text-indigo-200 hover:text-white hover:bg-indigo-500 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
-                      <XIcon className="block h-6 w-6" aria-hidden="true" />
+                      <FontAwesomeIcon icon={faX} className="block h-6 w-6" aria-hidden="true" />
                     ) : (
-                      <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+                      <FontAwesomeIcon icon={faBars} className="block h-6 w-6" aria-hidden="true" />
                     )}
                   </Disclosure.Button>
                 </div>
@@ -132,7 +136,11 @@ export function TopNavigation() {
                   >
                     {item.name}
                     {item.external ? (
-                      <ExternalLinkIcon className="ml-2 h-4 w-4 inline -mt-1" aria-hiden="true" />
+                      <FontAwesomeIcon
+                        icon={faArrowUpRightFromSquare}
+                        className="ml-2 h-4 w-4 inline -mt-1"
+                        aria-hidden="true"
+                      />
                     ) : null}
                   </Disclosure.Button>
                 ))}

@@ -1,8 +1,9 @@
 import * as React from 'react'
 import activities from '../../model/activities'
 import { isAllEmptyString } from '../../utils/string'
-import { ChevronRightIcon, HomeIcon } from '@heroicons/react/solid'
 import { TopNavigation } from '../../components/top-navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleRight } from '@fortawesome/pro-solid-svg-icons'
 
 export default function Index() {
   return (
@@ -49,8 +50,9 @@ export default function Index() {
                                   {rest.map((item) => (
                                     <li key={item}>
                                       <div className="flex items-center">
-                                        <ChevronRightIcon
-                                          className="flex-shrink-0 h-5 w-5 text-gray-400"
+                                        <FontAwesomeIcon
+                                          icon={faAngleRight}
+                                          className="flex-shrink-0 h-3 w-3 text-gray-400"
                                           aria-hidden="true"
                                         />
                                         <div className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-700">
