@@ -38,13 +38,13 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
             <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
               <div className="relative h-16 flex items-center justify-between lg:border-b lg:border-indigo-400 lg:border-opacity-25">
                 <div className="px-2 flex items-center lg:px-0">
-                  <div className="flex-shrink-0">
+                  <Link to="/" className="flex-shrink-0">
                     <img
                       className="block h-8 w-8"
                       src="https://tailwindui.com/img/logos/workflow-mark-indigo-300.svg"
                       alt="Workflow"
                     />
-                  </div>
+                  </Link>
                   <div className="hidden lg:block lg:ml-10">
                     <div className="flex space-x-4">
                       {navigation.map((item) =>
