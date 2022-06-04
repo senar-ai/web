@@ -5,6 +5,7 @@ export type Activities = Activity[]
 export type Activity = {
   readonly id: number
   readonly usia: string
+  readonly categorySlug: string
   readonly nama: string
   readonly slug: string
   readonly ringkasan: string

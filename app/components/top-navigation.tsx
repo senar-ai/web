@@ -5,15 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faBars, faMagnifyingGlass, faX } from '@fortawesome/pro-duotone-svg-icons'
 
 const navigation = [
-  { name: 'Senarai', href: '/', current: true },
-  { name: 'Aktivitas', href: '/activities', current: false },
-  { name: 'Tentang Kami', href: '/tentang-kami', current: false },
+  { name: 'Senarai', href: '/' },
+  { name: 'Aktivitas', href: '/activities' },
+  { name: 'Tentang Kami', href: '/tentang-kami' },
   {
     name: 'Kontribusi',
     href: 'https://docs.google.com/forms/d/e/1FAIpQLSe3mkw1HYUkRklU_sRTk5qgdr_jItqxR7wAjP_W0uEU8HBRqA/viewform',
-    current: false,
     external: true,
   },
+  { name: 'Database Mentah', href: 'https://zainf.dev/senarai-db', external: true },
 ]
 
 function classNames(...classes) {

@@ -1,20 +1,16 @@
 /* This example requires Tailwind CSS v2.0+ */
 import * as React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faPenToSquare, faPersonChalkboard } from '@fortawesome/pro-duotone-svg-icons'
+import { faArrowUpRightFromSquare, faPenToSquare } from '@fortawesome/pro-duotone-svg-icons'
 import type { Activity } from '../model/activities'
-import { categoriesRecord } from '../model/categories'
+import { categoriesRecord, getCategoryByCategorySlug } from '../model/categories'
 import { classNames } from '../utils/class-names'
 
 export function CardsList({ activities }: { activities: Activity[] }) {
   return (
     <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {activities.map(({ id, nama, link, ringkasan, image, usia }) => {
-        const currentCategory = categoriesRecord[usia]
-        const { icon, iconForeground, iconBackground } = currentCategory ?? {
-          icon: faPersonChalkboard,
-          iconForeground: 'text-indigo-700',
-        }
+      {activities.map(({ id, nama, link, ringkasan, image, usia, categorySlug }) => {
+        const { icon, iconForeground, iconBackground, title } = getCategoryByCategorySlug(categorySlug)
         return (
           <li
             key={id}
@@ -26,7 +22,7 @@ export function CardsList({ activities }: { activities: Activity[] }) {
               ) : (
                 <FontAwesomeIcon
                   icon={icon}
-                  className={classNames(iconForeground, 'w-16 h-16 flex-shrink-0 mx-auto text-sky-600')}
+                  className={classNames(iconForeground, 'w-16 h-16 flex-shrink-0 mx-auto ')}
                 />
               )}
               <h3 className="mt-6 text-gray-900 text-sm font-medium">{nama}</h3>
@@ -39,7 +35,7 @@ export function CardsList({ activities }: { activities: Activity[] }) {
                   <span
                     className={classNames(iconForeground, iconBackground, 'px-2 py-1 text-xs font-medium rounded-full')}
                   >
-                    {usia}
+                    {title}
                   </span>
                 </dd>
               </dl>

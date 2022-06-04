@@ -33,6 +33,8 @@ export const rowReducer = (row: string[]) => {
     prev[colName] = cellValue
     if (colName == 'nama') {
       prev.slug = [getKebabCase(prev.nama as string)].join('-')
+    } else if (colName === 'usia') {
+      prev.categorySlug = getKebabCase(prev.usia as string)
     }
     return prev
   }

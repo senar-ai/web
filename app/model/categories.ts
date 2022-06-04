@@ -8,6 +8,7 @@ import {
   faBriefcase,
   faFamily,
   faPeopleGroup,
+  faPersonChalkboard,
 } from '@fortawesome/pro-duotone-svg-icons'
 import {
   faChildReaching as falChildReaching,
@@ -127,6 +128,19 @@ export const categories: Categories = [
 ]
 
 export const categoriesRecord = categories.reduce((acc, category) => {
-  acc[category.title] = category
+  acc[category.slug] = category
   return acc
 }, {} as Record<string, Category>)
+
+const uncategorized: Category = {
+  title: 'Belum Terkategorikan',
+  slug: 'belum-terkategorikan',
+  description: 'Belum teridentifikasi untuk kategori usia tertentu',
+  icon: faPersonChalkboard,
+  iconForeground: 'text-amber-700',
+  iconBackground: 'bg-amber-50',
+}
+
+export const getCategoryByCategorySlug = (categorySlug: string): Category => {
+  return categoriesRecord[categorySlug] ?? uncategorized
+}
