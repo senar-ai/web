@@ -1,44 +1,28 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  const colors = require('tailwindcss/colors')
-  
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        colors: {
-          sky: colors.sky,
-          teal: colors.teal,
-          rose: colors.rose,
-        },
-      },
-    },
-  }
-  ```
-*/
 import * as React from 'react'
-import {
-  AcademicCapIcon,
-  BadgeCheckIcon,
-  BriefcaseIcon,
-  ClockIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
-  UsersIcon,
-} from '@heroicons/react/outline'
 import { classNames } from '../utils/class-names'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faChildReaching,
+  faSchool,
+  faSchoolFlag,
+  faBuildingColumns,
+  faGraduationCap,
+  faBriefcase,
+  faFamily,
+} from '@fortawesome/pro-duotone-svg-icons'
+import {
+  faChildReaching as fatChildReaching,
+  faSchool as fatSchool,
+  faSchoolFlag as fatSchoolFlag,
+  faBuildingColumns as fatBuildingColumns,
+} from '@fortawesome/pro-thin-svg-icons'
 
 const actions = [
   {
     title: 'PAUD',
     description: 'Pendidikan Anak Usia Dini',
     href: '#',
-    icon: ClockIcon,
+    icon: faChildReaching,
     iconForeground: 'text-teal-700',
     iconBackground: 'bg-teal-50',
   },
@@ -46,7 +30,7 @@ const actions = [
     title: 'PAUD ke atas',
     description: 'Usia tiga tahun ke atas',
     href: '#',
-    icon: ClockIcon,
+    icon: fatChildReaching,
     iconForeground: 'text-teal-700',
     iconBackground: 'bg-teal-50',
   },
@@ -54,7 +38,7 @@ const actions = [
     title: 'SD',
     description: 'Sekolah Dasar',
     href: '#',
-    icon: BadgeCheckIcon,
+    icon: faSchool,
     iconForeground: 'text-purple-700',
     iconBackground: 'bg-purple-50',
   },
@@ -62,7 +46,7 @@ const actions = [
     title: 'SD ke atas',
     description: 'Usia enam tahun ke atas',
     href: '#',
-    icon: BadgeCheckIcon,
+    icon: fatSchool,
     iconForeground: 'text-purple-700',
     iconBackground: 'bg-purple-50',
   },
@@ -70,7 +54,7 @@ const actions = [
     title: 'SMP',
     description: 'Sekolah Menengah Pertama',
     href: '#',
-    icon: UsersIcon,
+    icon: faSchoolFlag,
     iconForeground: 'text-sky-700',
     iconBackground: 'bg-sky-50',
   },
@@ -78,7 +62,7 @@ const actions = [
     title: 'SMP ke atas',
     description: 'Usia 12 tahun ke atas',
     href: '#',
-    icon: UsersIcon,
+    icon: fatSchoolFlag,
     iconForeground: 'text-sky-700',
     iconBackground: 'bg-sky-50',
   },
@@ -86,7 +70,7 @@ const actions = [
     title: 'SMA',
     description: 'Sekolah Menengah Atas',
     href: '#',
-    icon: ShieldCheckIcon,
+    icon: faBuildingColumns,
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
   },
@@ -94,7 +78,7 @@ const actions = [
     title: 'SMA ke atas',
     description: 'Usia 15 tahun ke atas',
     href: '#',
-    icon: ShieldCheckIcon,
+    icon: fatBuildingColumns,
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
   },
@@ -102,7 +86,7 @@ const actions = [
     title: 'Kuliah',
     description: 'Perguruan Tinggi',
     href: '#',
-    icon: AcademicCapIcon,
+    icon: faGraduationCap,
     iconForeground: 'text-indigo-700',
     iconBackground: 'bg-indigo-50',
   },
@@ -110,7 +94,7 @@ const actions = [
     title: 'Profesional',
     description: 'Pekerja Profesional',
     href: '#',
-    icon: BriefcaseIcon,
+    icon: faBriefcase,
     iconForeground: 'text-rose-700',
     iconBackground: 'bg-rose-50',
   },
@@ -118,7 +102,7 @@ const actions = [
     title: 'Semua Usia',
     description: 'Untuk semua kalangan',
     href: '#',
-    icon: UserGroupIcon,
+    icon: faFamily,
     iconForeground: 'text-lime-700',
     iconBackground: 'bg-lime-50',
   },
@@ -146,7 +130,7 @@ export function ActionCards() {
                 'rounded-lg inline-flex p-3 ring-4 ring-white'
               )}
             >
-              <action.icon className="h-6 w-6" aria-hidden="true" />
+              <FontAwesomeIcon icon={action.icon} className="h-6 w-6" />
             </span>
           </div>
           <div className="mt-8">
