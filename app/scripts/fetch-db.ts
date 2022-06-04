@@ -5,7 +5,7 @@ import ora from 'ora'
 import { load } from 'cheerio'
 import fetch from 'cross-fetch'
 import { isAllEmptyString, getKebabCase, toSecond } from '../utils/string'
-import { itemReducer } from '../utils/item'
+import { rowReducer } from '../utils/google-sheets'
 
 export async function fetchDatabase() {
   const source = await fetch('https://zainf.dev/senarai-db')
@@ -58,7 +58,7 @@ export async function fetchDatabase() {
         name: sheetName,
         slug: getKebabCase(sheetName),
         data: sheetRows.map((row, rowIndex) => {
-          return sheetColumns.reduce(itemReducer(row), {
+          return sheetColumns.reduce(rowReducer(row), {
             id: rowIndex.toString(),
           })
         }),

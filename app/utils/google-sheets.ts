@@ -19,7 +19,7 @@ export const extractGoogleQuery = (value: string): string => {
   return $('body').html() ?? ''
 }
 
-export const itemReducer = (row: string[]) => {
+export const rowReducer = (row: string[]) => {
   return (prev: Record<string, number | string>, col: SheetColumn) => {
     const colName = toSnakeCase(col.name)
     let cellValue = row[col.index]
