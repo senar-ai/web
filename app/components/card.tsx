@@ -8,29 +8,35 @@ import { classNames } from '../utils/class-names'
 export type CardProps = {
   name: string
   description: string
+  cta: string
   link: string
+  secondaryCta?: string
+  secondaryLink?: string
   category: string
   image?: string
   icon?: IconDefinition
-  iconForeground?: string
-  iconBackground?: string
+  foregroundColor?: string
+  backgroundColor?: string
 }
 
 export const Card: React.FC<CardProps> = ({
   name,
-  link,
   description,
+  cta,
+  link,
+  secondaryCta,
+  secondaryLink,
   image,
   category,
   icon,
-  iconForeground,
-  iconBackground,
+  foregroundColor: iconForeground,
+  backgroundColor: iconBackground,
 }) => {
   return (
     <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
       <div className="flex-1 flex flex-col p-8">
         {image ? (
-          <img className="w-16 h-16 flex-shrink-0 mx-auto rounded-full" src={image} alt="" />
+          <img className="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src={image} alt="" />
         ) : (
           <FontAwesomeIcon icon={icon} className={classNames(iconForeground, 'w-16 h-16 flex-shrink-0 mx-auto ')} />
         )}
@@ -49,16 +55,17 @@ export const Card: React.FC<CardProps> = ({
       </div>
       <div>
         <div className="-mt-px flex divide-x divide-gray-200">
-          <div className="w-0 flex-1 flex">
-            <a
-              // TODO: prefill form with the current data
-              href="#"
-              className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
-            >
-              <FontAwesomeIcon icon={faPenToSquare} className="w-5 h-5 text-gray-400" aria-hidden="true" />
-              <span className="ml-3">Koreksi</span>
-            </a>
-          </div>
+          {secondaryLink && secondaryCta ? (
+            <div className="w-0 flex-1 flex">
+              <a
+                href="#"
+                className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
+              >
+                <FontAwesomeIcon icon={faPenToSquare} className="w-5 h-5 text-gray-400" aria-hidden="true" />
+                <span className="ml-3">{secondaryCta}</span>
+              </a>
+            </div>
+          ) : null}
           <div className="-ml-px w-0 flex-1 flex">
             <a
               href={link.startsWith('http') ? link : `http://${link}`}
@@ -66,7 +73,7 @@ export const Card: React.FC<CardProps> = ({
               rel="noopener noreferrer"
               className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
             >
-              <span className="mr-3">Kunjungi</span>
+              <span className="mr-3">{cta}</span>
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-5 h-5 text-gray-400" aria-hidden="true" />
             </a>
           </div>

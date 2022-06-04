@@ -13,13 +13,16 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
           <Card
             key={id}
             name={nama}
+            cta="Kunjungi"
             link={link}
+            secondaryCta="Koreksi"
+            secondaryLink="#" // TODO: compose a URL to the Google Form with prefilled data
             description={ringkasan}
             image={image}
             category={title}
             icon={icon}
-            iconForeground={iconForeground}
-            iconBackground={iconBackground}
+            foregroundColor={iconForeground}
+            backgroundColor={iconBackground}
           />
         )
       })}

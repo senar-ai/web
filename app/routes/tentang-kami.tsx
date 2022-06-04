@@ -1,13 +1,13 @@
 import * as React from 'react'
+import { ContactsGrid } from '../components/contacts-grid'
 import { PageLayout } from '../components/page-layout'
+import { contacts } from '../model/contacts'
 
-export default function TentangKami() {
+export default function AboutUs() {
   return (
     <PageLayout>
       {/* Replace with your content */}
-      <div className="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-        <div className="h-96 border-4 border-dashed border-gray-200 rounded-lg" />
-      </div>
+      <ContactsGrid contacts={contacts} />
       {/* /End replace */}
     </PageLayout>
   )
