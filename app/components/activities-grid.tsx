@@ -20,6 +20,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
             description={ringkasan}
             image={image}
             category={title}
+            categorySlug={categorySlug}
             icon={icon}
             foregroundColor={iconForeground}
             backgroundColor={iconBackground}

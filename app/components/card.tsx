@@ -4,6 +4,7 @@ import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpRightFromSquare, faPenToSquare } from '@fortawesome/pro-duotone-svg-icons'
 import { classNames } from '../utils/class-names'
+import { Link } from '@remix-run/react'
 
 export type CardProps = {
   name: string
@@ -13,6 +14,7 @@ export type CardProps = {
   secondaryCta?: string
   secondaryLink?: string
   category: string
+  categorySlug?: string
   image?: string
   icon?: IconDefinition
   foregroundColor?: string
@@ -28,6 +30,7 @@ export const Card: React.FC<CardProps> = ({
   secondaryLink,
   image,
   category,
+  categorySlug,
   icon,
   foregroundColor: iconForeground,
   backgroundColor: iconBackground,
@@ -46,10 +49,25 @@ export const Card: React.FC<CardProps> = ({
           <dd className="text-gray-500 text-sm">{description}</dd>
           <dt className="sr-only">Category</dt>
           <dd className="mt-3">
-            {/* TODO: make category clickable to navigate across categories */}
-            <span className={classNames(iconForeground, iconBackground, 'px-2 py-1 text-xs font-medium rounded-full')}>
-              {category}
-            </span>
+            {categorySlug ? (
+              <Link
+                to={`/activities/${categorySlug}`}
+                className={classNames(
+                  iconForeground,
+                  iconBackground,
+                  'hover:text-opacity-75',
+                  'px-4 py-2 text-xs font-medium rounded-full'
+                )}
+              >
+                {category}
+              </Link>
+            ) : (
+              <span
+                className={classNames(iconForeground, iconBackground, 'px-4 py-2 text-xs font-medium rounded-full')}
+              >
+                {category}
+              </span>
+            )}
           </dd>
         </dl>
       </div>
