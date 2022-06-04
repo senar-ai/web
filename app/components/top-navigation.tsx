@@ -6,15 +6,14 @@ import { faArrowUpRightFromSquare, faBars, faMagnifyingGlass, faX } from '@forta
 import { classNames } from '../utils/class-names'
 import Breadcrumbs from './breadcrumbs'
 
+export const senaraiForm =
+  'https://docs.google.com/forms/d/e/1FAIpQLSe3mkw1HYUkRklU_sRTk5qgdr_jItqxR7wAjP_W0uEU8HBRqA/viewform'
+
 const navigation = [
   { name: 'Senarai', href: '/' },
   { name: 'Aktivitas', href: '/activities' },
   { name: 'Tentang Kami', href: '/tentang-kami' },
-  {
-    name: 'Kontribusi',
-    href: 'https://docs.google.com/forms/d/e/1FAIpQLSe3mkw1HYUkRklU_sRTk5qgdr_jItqxR7wAjP_W0uEU8HBRqA/viewform',
-    external: true,
-  },
+  { name: 'Kontribusi', href: senaraiForm, external: true },
   { name: 'Database Mentah', href: 'https://zainf.dev/senarai-db', external: true },
 ]
 
