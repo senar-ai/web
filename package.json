@@ -34,6 +34,8 @@
   "devDependencies": {
     "@headlessui/react": "1.6.4",
     "@remix-run/dev": "^1.5.1",
+    "@types/react": "18.0.11",
+    "@types/react-dom": "18.0.5",
     "chalk": "5.0.1",
     "cheerio": "1.0.0-rc.11",
     "cross-env": "^7.0.3",
