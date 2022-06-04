@@ -31,7 +31,7 @@ export function ActionCards({ categories }: { categories: Categories }) {
           </div>
           <div className="mt-8">
             <h3 className="text-lg font-medium">
-              <Link to="/activities" className="focus:outline-none">
+              <Link to={`/activities/${category.slug}`} className="focus:outline-none">
                 {/* Extend touch target to entire panel */}
                 <span className="absolute inset-0" aria-hidden="true" />
                 {category.title}
