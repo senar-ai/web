@@ -62,7 +62,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                             {item.name}
                             <FontAwesomeIcon
                               icon={faArrowUpRightFromSquare}
-                              className="ml-2 h-4 w-4 inline -mt-1"
+                              className="ml-2 h-4 w-4 inline"
                               aria-hidden="true"
                             />
                           </a>
@@ -142,7 +142,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                     {item.external ? (
                       <FontAwesomeIcon
                         icon={faArrowUpRightFromSquare}
-                        className="ml-2 h-4 w-4 inline -mt-1"
+                        className="ml-2 h-4 w-4 inline"
                         aria-hidden="true"
                       />
                     ) : null}
