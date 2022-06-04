@@ -55,18 +55,21 @@ export const Card: React.FC<CardProps> = ({
                 className={classNames(
                   iconForeground,
                   iconBackground,
-                  'hover:text-opacity-75',
-                  'px-4 py-2 text-xs font-medium rounded-full'
+                  'px-4 py-2 text-sm font-medium rounded-full hover:text-opacity-75'
                 )}
               >
                 {category}
               </Link>
             ) : (
-              <span
-                className={classNames(iconForeground, iconBackground, 'px-4 py-2 text-xs font-medium rounded-full')}
+              <button
+                className={classNames(
+                  iconForeground,
+                  iconBackground,
+                  'px-4 py-2 text-sm font-medium rounded-full hover:text-opacity-75 cursor-not-allowed'
+                )}
               >
                 {category}
-              </span>
+              </button>
             )}
           </dd>
         </dl>
