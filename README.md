@@ -19,11 +19,11 @@ Read about [how we recommend to manage dependencies for Remix projects using Den
   npm install react
   ```
   ```ts
-  import { useState } from "react";
+  import { useState } from 'react'
   ```
 - ✅ You may use inlined URL imports or [deps.ts](https://deno.land/manual/examples/manage_dependencies#managing-dependencies) for Deno modules.
   ```ts
-  import { copy } from "https://deno.land/std@0.138.0/streams/conversion.ts";
+  import { copy } from 'https://deno.land/std@0.138.0/streams/conversion.ts'
   ```
 - ❌ Do not use [import maps](https://deno.land/manual/linking_to_external_code/import_maps).
 
@@ -112,3 +112,13 @@ After you've set up Deno Deploy, run:
 ```sh
 npm run deploy
 ```
+
+### Useful resources
+
+#### How to use FontAwesome in the project
+
+1. Search [FontAwesome Icons](https://fontawesome.com/icons)
+2. Download the SVG code (if it's a Pro icon, please ask @zainfathoni to download it for you)
+3. Paste the SVG code into the `SVG INPUT` panel of [SVGR with these params](https://react-svgr.com/playground/?svgProps=role%3Dimg%2Cfill%3DcurrentColor&typescript=true)
+4. Copy the resulting `<svg>` tag in the `JSX OUTPUT` panel
+5. Paste the `<svg>` tag into the corresponding file under the [icons](/app/icons/) directory

@@ -1,7 +1,6 @@
-import { faGrid2Plus } from '@fortawesome/pro-duotone-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMatches } from '@remix-run/react'
 import * as React from 'react'
+import { Grid2Plus } from '../icons/duotone'
 import type { Activity } from '../model/activities'
 import { getCategoryByCategorySlug } from '../model/categories'
 import { classNames } from '../utils/class-names'
@@ -46,7 +45,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
           cta="Usulkan"
           category={category.title}
           link={addNewActivityLink}
-          icon={faGrid2Plus}
+          icon={Grid2Plus}
           foregroundColor={category.iconForeground}
           backgroundColor={category.iconBackground}
         />
@@ -62,7 +61,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
             'rounded-xl inline-flex p-4 mb-4 ring-4 ring-white'
           )}
         >
-          <FontAwesomeIcon icon={category.icon} className="w-16 h-16 flex-shrink-0 mx-auto " />
+          <category.icon className="w-16 h-16 flex-shrink-0 mx-auto " />
         </div>
         <h3 className="mt-2 text-sm font-medium text-gray-900">Belum ada aktivitas {category.title}</h3>
         <p className="mt-1 text-sm text-gray-500">
@@ -75,7 +74,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            <FontAwesomeIcon icon={faGrid2Plus} className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
+            <Grid2Plus className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
             Usulkan Aktivitas
           </a>
         </div>

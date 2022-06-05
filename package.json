@@ -19,13 +19,6 @@
     "start": "cross-env NODE_ENV=production deno run --unstable --allow-net --allow-read --allow-env ./build/index.js"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "6.1.1",
-    "@fortawesome/pro-duotone-svg-icons": "6.1.1",
-    "@fortawesome/pro-light-svg-icons": "6.1.1",
-    "@fortawesome/pro-regular-svg-icons": "6.1.1",
-    "@fortawesome/pro-solid-svg-icons": "6.1.1",
-    "@fortawesome/pro-thin-svg-icons": "6.1.1",
-    "@fortawesome/react-fontawesome": "0.1.18",
     "@remix-run/deno": "^1.5.1",
     "@remix-run/react": "^1.5.1",
     "react": "^17.0.2",

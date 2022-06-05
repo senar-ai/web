@@ -1,10 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
 import * as React from 'react'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faPenToSquare } from '@fortawesome/pro-duotone-svg-icons'
 import { classNames } from '../utils/class-names'
 import { Link } from '@remix-run/react'
+import { ArrowUpRightFromSquare, PenToSquare } from '../icons/duotone'
 
 export type CardProps = {
   name: string
@@ -16,7 +14,7 @@ export type CardProps = {
   category: string
   categorySlug?: string
   image?: string
-  icon?: IconDefinition
+  icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
   foregroundColor?: string
   backgroundColor?: string
 }
@@ -31,7 +29,7 @@ export const Card: React.FC<CardProps> = ({
   image,
   category,
   categorySlug,
-  icon,
+  icon: Icon,
   foregroundColor: iconForeground,
   backgroundColor: iconBackground,
 }) => {
@@ -40,9 +38,10 @@ export const Card: React.FC<CardProps> = ({
       <div className="flex-1 flex flex-col p-8">
         {image ? (
           <img className="w-32 h-32 flex-shrink-0 mx-auto rounded-full" src={image} alt="" />
-        ) : (
-          <FontAwesomeIcon icon={icon} className={classNames(iconForeground, 'w-16 h-16 flex-shrink-0 mx-auto ')} />
-        )}
+        ) : Icon ? (
+          <Icon className={classNames(iconForeground, 'w-16 h-16 flex-shrink-0 mx-auto')} />
+        ) : null}
+
         <h3 className="mt-6 text-gray-900 text-sm font-medium">{name}</h3>
         <dl className="mt-1 flex-grow flex flex-col justify-between">
           <dt className="sr-only">Description</dt>
@@ -84,7 +83,7 @@ export const Card: React.FC<CardProps> = ({
                 rel="noopener noreferrer"
                 className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
               >
-                <FontAwesomeIcon icon={faPenToSquare} className="w-5 h-5 text-gray-400" aria-hidden="true" />
+                <PenToSquare className="w-5 h-5 text-gray-400" aria-hidden="true" />
                 <span className="ml-3">{secondaryCta}</span>
               </a>
             </div>
@@ -98,7 +97,7 @@ export const Card: React.FC<CardProps> = ({
                 className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
               >
                 <span className="mr-3">{cta}</span>
-                <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-5 h-5 text-gray-400" aria-hidden="true" />
+                <ArrowUpRightFromSquare className="w-5 h-5 text-gray-400" aria-hidden="true" />
               </a>
             ) : (
               <button

@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { classNames } from '../utils/class-names'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from '@remix-run/react'
 import { Categories } from '../model/categories'
 
@@ -26,7 +25,7 @@ export function ActionCards({ categories }: { categories: Categories }) {
                 'rounded-lg inline-flex p-3 ring-4 ring-white'
               )}
             >
-              <FontAwesomeIcon icon={category.icon} className="h-6 w-6" />
+              <category.icon className="h-6 w-6" />
             </span>
           </div>
           <div className="mt-8">

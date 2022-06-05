@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Link, useMatches } from '@remix-run/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUpRightFromSquare, faBars, faMagnifyingGlass, faX } from '@fortawesome/pro-duotone-svg-icons'
 import { classNames } from '../utils/class-names'
 import Breadcrumbs from './breadcrumbs'
+import { ArrowUpRightFromSquare, Bars, MagnifyingGlass, X } from '../icons/duotone'
 
 export const senaraiForm = '/go/form'
 
@@ -29,7 +28,7 @@ const SearchBar = (props: TopNavigationProps) => {
       </label>
       <div className="relative text-gray-400 focus-within:text-gray-600">
         <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-          <FontAwesomeIcon icon={faMagnifyingGlass} className="h-5 w-5" aria-hidden="true" />
+          <MagnifyingGlass className="h-5 w-5" aria-hidden="true" />
         </div>
         <input
           id="search"
@@ -84,11 +83,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                             rel="noopener noreferrer"
                           >
                             {item.name}
-                            <FontAwesomeIcon
-                              icon={faArrowUpRightFromSquare}
-                              className="ml-2 h-4 w-4 inline"
-                              aria-hidden="true"
-                            />
+                            <ArrowUpRightFromSquare className="ml-2 h-4 w-4 inline -mt-1" aria-hidden="true" />
                           </a>
                         ) : (
                           <Link
@@ -118,9 +113,9 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                   <Disclosure.Button className="bg-indigo-600 p-2 rounded-md inline-flex items-center justify-center text-indigo-200 hover:text-white hover:bg-indigo-500 hover:bg-opacity-75 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
-                      <FontAwesomeIcon icon={faX} className="block h-6 w-6" aria-hidden="true" />
+                      <X className="block h-6 w-6" aria-hidden="true" />
                     ) : (
-                      <FontAwesomeIcon icon={faBars} className="block h-6 w-6" aria-hidden="true" />
+                      <Bars className="block h-6 w-6" aria-hidden="true" />
                     )}
                   </Disclosure.Button>
                 </div>
@@ -151,11 +146,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                   >
                     {item.name}
                     {item.external ? (
-                      <FontAwesomeIcon
-                        icon={faArrowUpRightFromSquare}
-                        className="ml-2 h-4 w-4 inline"
-                        aria-hidden="true"
-                      />
+                      <ArrowUpRightFromSquare className="ml-2 h-4 w-4 inline -mt-1" aria-hidden="true" />
                     ) : null}
                   </Disclosure.Button>
                 ))}

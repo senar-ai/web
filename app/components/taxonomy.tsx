@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { faAngleRight } from '@fortawesome/pro-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Activity } from '../model/activities'
 import { isAllEmptyString } from '../utils/string'
+import { ChevronRight } from '../icons/solid'
 
 export function Taxonomy({
   activity: { benua, negara, provinsi, kabupaten, kecamatan, desa },
@@ -25,11 +24,7 @@ export function Taxonomy({
           {rest.map((item) => (
             <li key={item}>
               <div className="flex items-center">
-                <FontAwesomeIcon
-                  icon={faAngleRight}
-                  className="flex-shrink-0 h-3 w-3 text-gray-400"
-                  aria-hidden="true"
-                />
+                <ChevronRight className="flex-shrink-0 h-3 w-3 text-gray-400" aria-hidden="true" />
                 <div className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-700">{item}</div>
               </div>
             </li>
