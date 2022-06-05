@@ -92,7 +92,7 @@ export const Card: React.FC<CardProps> = ({
           <div className="-ml-px w-0 flex-1 flex">
             {link && cta ? (
               <a
-                href={link.startsWith('http') ? link : `http://${link}`}
+                href={link.startsWith('http') || link.startsWith('/') ? link : `http://${link}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
