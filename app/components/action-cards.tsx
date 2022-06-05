@@ -13,7 +13,7 @@ export function ActionCards({ categories }: { categories: Categories }) {
           className={classNames(
             categoryIdx === 0 ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none' : '',
             categoryIdx === 1 ? 'sm:rounded-tr-lg' : '',
-            categoryIdx === categories.length - 2 ? 'sm:rounded-bl-lg' : '',
+            categoryIdx === categories.length - 3 ? 'sm:rounded-bl-lg' : '',
             categoryIdx === categories.length - 1 ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none' : '',
             'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
           )}
