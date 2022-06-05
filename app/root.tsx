@@ -34,6 +34,16 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-47CSFLV9JK"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-47CSFLV9JK');
+        `,
+          }}
+        />
       </head>
       <body className="h-full">
         <Outlet />
