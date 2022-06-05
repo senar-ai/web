@@ -140,6 +140,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                     href={item.external ? item.href : undefined}
                     to={item.external ? undefined : item.href}
                     className={classNames(
+                      item.priority ? 'hidden lg:inline' : '',
                       item.href === currentPathname
                         ? 'bg-indigo-700 text-white'
                         : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
