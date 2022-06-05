@@ -12,9 +12,10 @@ const shortlinks = {
 export const loader: LoaderFunction = async ({ params: { shortlink }, request }) => {
   console.log(shortlink)
   const destination = shortlinks[shortlink]
-  const { searchParams } = new URL(request.url)
   if (destination) {
-    return redirect(`${destination}?${searchParams.toString()}`)
+    const { searchParams } = new URL(request.url)
+    const queryParams = searchParams.toString()
+    return redirect(`${destination}${queryParams ? `?${queryParams}` : ''}`)
   }
   return redirect('/')
 }
