@@ -10,16 +10,40 @@ export const senaraiForm =
   'https://docs.google.com/forms/d/e/1FAIpQLSe3mkw1HYUkRklU_sRTk5qgdr_jItqxR7wAjP_W0uEU8HBRqA/viewform'
 
 const navigation = [
-  { name: 'Senarai', href: '/' },
-  { name: 'Aktivitas', href: '/activities' },
+  { name: 'Senarai', href: '/', priority: true },
+  { name: 'Aktivitas', href: '/activities', priority: true },
   { name: 'Tentang Kami', href: '/tentang-kami' },
-  { name: 'Kontribusi', href: senaraiForm, external: true },
+  { name: 'Kontribusi', href: senaraiForm, priority: true, external: true },
   { name: 'Database Mentah', href: 'https://zainf.dev/senarai-db', external: true },
 ]
 
 export type TopNavigationProps = {
   keyword: string
   setKeyword: (keyword: string) => void
+}
+
+const SearchBar = (props: TopNavigationProps) => {
+  return (
+    <div className="w-full lg:max-w-xs">
+      <label htmlFor="search" className="sr-only">
+        Cari
+      </label>
+      <div className="relative text-gray-400 focus-within:text-gray-600">
+        <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
+          <FontAwesomeIcon icon={faMagnifyingGlass} className="h-5 w-5" aria-hidden="true" />
+        </div>
+        <input
+          id="search"
+          className="block w-full bg-white py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white focus:border-white sm:text-sm"
+          placeholder="Cari"
+          type="search"
+          name="search"
+          value={props.keyword}
+          onChange={(e) => props.setKeyword(e.target.value)}
+        />
+      </div>
+    </div>
+  )
 }
 
 export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigationProps) => {
@@ -45,7 +69,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                       alt="Senarai"
                     />
                   </Link>
-                  <div className="hidden lg:block lg:ml-10">
+                  <div className="block ml-10">
                     <div className="flex space-x-4">
                       {navigation.map((item) =>
                         item.external ? (
@@ -53,6 +77,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                             key={item.name}
                             href={item.href}
                             className={classNames(
+                              item.priority ? '' : 'hidden lg:inline',
                               'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                               'rounded-md py-2 px-3 text-sm font-medium'
                             )}
@@ -71,6 +96,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                             to={item.href}
                             key={item.name}
                             className={classNames(
+                              item.priority ? '' : 'hidden lg:inline',
                               item.href === currentPathname
                                 ? 'bg-indigo-700 text-white'
                                 : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
@@ -85,26 +111,8 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                     </div>
                   </div>
                 </div>
-                <div className="flex-1 px-2 flex justify-center lg:ml-6 lg:justify-end">
-                  <div className="max-w-lg w-full lg:max-w-xs">
-                    <label htmlFor="search" className="sr-only">
-                      Cari
-                    </label>
-                    <div className="relative text-gray-400 focus-within:text-gray-600">
-                      <div className="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} className="h-5 w-5" aria-hidden="true" />
-                      </div>
-                      <input
-                        id="search"
-                        className="block w-full bg-white py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white focus:border-white sm:text-sm"
-                        placeholder="Cari"
-                        type="search"
-                        name="search"
-                        value={props.keyword}
-                        onChange={(e) => props.setKeyword(e.target.value)}
-                      />
-                    </div>
-                  </div>
+                <div className="flex-1 px-2 hidden lg:ml-6 lg:flex lg:justify-end">
+                  <SearchBar {...props} />
                 </div>
                 <div className="flex lg:hidden">
                   {/* Mobile menu button */}
@@ -122,6 +130,9 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
 
             <Disclosure.Panel className="lg:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
+                <div className="mb-4 w-full">
+                  <SearchBar {...props} />
+                </div>
                 {navigation.map((item) => (
                   <Disclosure.Button
                     key={item.name}
