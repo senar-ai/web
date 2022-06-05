@@ -10,7 +10,7 @@ export const senaraiForm =
   'https://docs.google.com/forms/d/e/1FAIpQLSe3mkw1HYUkRklU_sRTk5qgdr_jItqxR7wAjP_W0uEU8HBRqA/viewform'
 
 const navigation = [
-  { name: 'Senarai', href: '/', priority: true },
+  { name: 'Senarai', href: '/' },
   { name: 'Aktivitas', href: '/activities', priority: true },
   { name: 'Tentang Kami', href: '/tentang-kami' },
   { name: 'Kontribusi', href: senaraiForm, priority: true, external: true },
@@ -69,7 +69,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                       alt="Senarai"
                     />
                   </Link>
-                  <div className="block ml-10">
+                  <div className="block lg:ml-10">
                     <div className="flex space-x-4">
                       {navigation.map((item) =>
                         item.external ? (
