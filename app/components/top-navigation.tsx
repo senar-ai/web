@@ -14,7 +14,7 @@ const navigation = [
   { name: 'Aktivitas', href: '/activities', priority: true },
   { name: 'Tentang Kami', href: '/tentang-kami' },
   { name: 'Kontribusi', href: senaraiForm, priority: true, external: true },
-  { name: 'Database Mentah', href: 'https://zainf.dev/senarai-db', external: true },
+  { name: 'Database Mentah', href: 'https://senar.ai/go/db', external: true },
 ]
 
 export type TopNavigationProps = {

@@ -8,11 +8,12 @@ const shortlinks = {
   db: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQUXjZ5M1lL9thjOEeNJxKsvE3VQ8i3XXUt8ryKWiya1HdapIcLuMUHKZ-VWECqCcX-cPKCZYzPXVvY/pubhtml',
 }
 
-export const loader: LoaderFunction = async ({ params: { shortlink } }) => {
+export const loader: LoaderFunction = async ({ params: { shortlink }, request }) => {
   console.log(shortlink)
   const destination = shortlinks[shortlink]
+  const { searchParams } = new URL(request.url)
   if (destination) {
-    return redirect(destination)
+    return redirect(`${destination}?${searchParams.toString()}`)
   }
   return redirect('/')
 }
