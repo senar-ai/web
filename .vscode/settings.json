@@ -1,5 +1,8 @@
 {
   "deno.enable": true,
   "deno.importMap": "./.vscode/resolve_npm_imports.json",
-  "deno.lint": true
+  "deno.lint": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///Users/zainfathoni/Code/GitHub/senar-ai/web/.github/workflows/deploy.yml"
+  }
 }

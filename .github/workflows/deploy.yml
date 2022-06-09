@@ -1,0 +1,40 @@
+name: 🤸🏽 Build & Deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: 🤸🏽 build & deploy
+    if: github.repository == 'zainfathoni/waroengbumi'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required to allow the GitHub Action to authenticate with Deno Deploy.
+      contents: read
+    steps:
+      - name: 🐑 Clone repository
+        uses: actions/checkout@v3
+
+      - name: 🦀 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: ⛓ Install Node deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 💿 Remix Build
+        run: npm run build
+
+      - name: 📂 Make deno dir
+        run: mkdir -p ./deno
+      
+      - name: 📝 Copy Remix build files into output dir
+        run: cp -R ./{build,public} ./deno
+
+      - name: 🚛 Deploy to Deno Deploy
+        uses: denoland/deployctl@v1
+        with:
+          project: waroengbumi # the name of the project on Deno Deploy
+          entrypoint: "./build/index.js" # the entrypoint to deploy
+          root: "./deno" # the root directory of the build assets
