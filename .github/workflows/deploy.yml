@@ -35,6 +35,6 @@ jobs:
       - name: 🚛 Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: waroengbumi # the name of the project on Deno Deploy
+          project: senarai # the name of the project on Deno Deploy
           entrypoint: "./build/index.js" # the entrypoint to deploy
           root: "./deno" # the root directory of the build assets
