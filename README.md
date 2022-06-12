@@ -157,7 +157,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://zainf.dev"><img src="https://avatars.githubusercontent.com/u/6315466?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Zain Fathoni</b></sub></a><br /><a href="https://github.com/senar-ai/web/commits?author=zainfathoni" title="Code">💻</a> <a href="https://github.com/senar-ai/web/commits?author=zainfathoni" title="Documentation">📖</a> <a href="#design-zainfathoni" title="Design">🎨</a> <a href="#infra-zainfathoni" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-zainfathoni" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://zainf.dev"><img src="https://avatars.githubusercontent.com/u/6315466?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Zain Fathoni</b></sub></a><br /><a href="https://github.com/senar-ai/web/commits?author=zainfathoni" title="Code">💻</a> <a href="https://github.com/senar-ai/web/commits?author=zainfathoni" title="Documentation">📖</a> <a href="#design-zainfathoni" title="Design">🎨</a> <a href="#infra-zainfathoni" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-zainfathoni" title="Maintenance">🚧</a> <a href="#tool-zainfathoni" title="Tools">🔧</a></td>
   </tr>
 </table>
 
