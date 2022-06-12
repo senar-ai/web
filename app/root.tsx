@@ -1,7 +1,15 @@
 import type { MetaFunction, LinksFunction } from '@remix-run/deno'
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from '@remix-run/react'
 import * as React from 'react'
 
+/* eslint-disable-next-line import/no-unresolved */
 import styles from './tailwind.css'
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }]
@@ -34,7 +42,10 @@ export default function App() {
       <head>
         <Meta />
         <Links />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-47CSFLV9JK"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-47CSFLV9JK"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];

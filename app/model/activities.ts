@@ -1,3 +1,4 @@
+/* eslint-disable-next-line import/no-unresolved */
 import database from '../data/senarai-db.json'
 
 export type Activities = Activity[]
@@ -19,4 +20,4 @@ export type Activity = {
   readonly image?: string
 }
 
-export const activities = database[0].data as unknown as Activities
+export const activities = database[0].data as Activities
