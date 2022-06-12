@@ -15,7 +15,8 @@
         "doc",
         "design",
         "infra",
-        "maintenance"
+        "maintenance",
+        "tool"
       ]
     }
   ],
