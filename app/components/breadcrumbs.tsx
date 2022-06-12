@@ -9,7 +9,7 @@ export default function Breadcrumbs() {
   if (filteredMatches.length && filteredMatches[0].pathname === '/activities') {
     return (
       <nav className="flex" aria-label="Breadcrumbs">
-        <ol role="list" className="bg-white rounded-md shadow px-6 flex space-x-4 min-w-full">
+        <ol className="bg-white rounded-md shadow px-6 flex space-x-4 min-w-full">
           <li className="flex">
             <div className="flex items-center">
               <Link to="/" className="text-gray-500 hover:text-gray-700">

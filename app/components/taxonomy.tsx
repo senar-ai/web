@@ -15,7 +15,7 @@ export function Taxonomy({
   else
     return (
       <nav className="flex py-2" aria-label="Taxonomy">
-        <ol role="list" className="flex items-center space-x-1">
+        <ol className="flex items-center space-x-1">
           <li>
             <div className="flex items-center">
               <div className="text-sm font-medium text-gray-500 hover:text-gray-700">{first}</div>

@@ -1,7 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import * as React from 'react'
-import { classNames } from '../utils/class-names'
 import { Link } from '@remix-run/react'
+import { classNames } from '../utils/class-names'
 import { ArrowUpRightFromSquare, PenToSquare } from '../icons/duotone'
 
 export type CardProps = {

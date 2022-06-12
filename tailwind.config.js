@@ -12,3 +12,5 @@ module.exports = {
   },
   plugins: [],
 }
+
+/* eslint @typescript-eslint/no-var-requires:"off" */

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { classNames } from '../utils/class-names'
 import { Link } from '@remix-run/react'
+import { classNames } from '../utils/class-names'
 import { Categories } from '../model/categories'
 
 export function ActionCards({ categories }: { categories: Categories }) {

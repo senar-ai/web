@@ -1,4 +1,5 @@
-import { LoaderFunction, redirect } from '@remix-run/deno'
+import type { LoaderFunction } from '@remix-run/deno'
+import { redirect } from '@remix-run/deno'
 
 const shortlinks = {
   draft: 'https://docs.google.com/spreadsheets/d/1-nl7RHGsQwF12GzGfj22YJiqlwLjm1ix-hqcR1mJxWs/edit#gid=0',

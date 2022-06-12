@@ -14,7 +14,7 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
   const addNewActivityLink = `${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(category.title)}`
   if (activities.length) {
     return (
-      <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {activities.map(({ id, nama, link, ringkasan, image, usia, categorySlug }) => {
           const { icon, iconForeground, iconBackground, title } = getCategoryByCategorySlug(categorySlug)
           return (

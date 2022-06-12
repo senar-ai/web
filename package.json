@@ -16,6 +16,7 @@
     "fetch": "node --require esbuild-register app/scripts/fetch-db.ts",
     "format": "pkode format",
     "lint": "pkode lint",
+    "lint:deno": "deno lint server.ts",
     "start": "cross-env NODE_ENV=production deno run --unstable --allow-net --allow-read --allow-env ./build/index.js"
   },
   "dependencies": {
