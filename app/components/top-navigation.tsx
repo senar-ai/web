@@ -2,7 +2,12 @@ import * as React from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Link, useMatches } from '@remix-run/react'
 import { classNames } from '../utils/class-names'
-import { ArrowUpRightFromSquare, Bars, MagnifyingGlass, X } from '../icons/duotone'
+import {
+  ArrowUpRightFromSquare,
+  Bars,
+  MagnifyingGlass,
+  X,
+} from '../icons/duotone'
 import Breadcrumbs from './breadcrumbs'
 
 export const senaraiForm = '/go/form'
@@ -44,7 +49,9 @@ const SearchBar = (props: TopNavigationProps) => {
   )
 }
 
-export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigationProps) => {
+export const TopNavigation: React.FC<TopNavigationProps> = (
+  props: TopNavigationProps
+) => {
   const matches = useMatches()
   const currentPathname = matches[1]?.pathname
   const title = navigation.find(({ href }) => href === currentPathname)?.name
@@ -83,7 +90,10 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                             rel="noopener noreferrer"
                           >
                             {item.name}
-                            <ArrowUpRightFromSquare className="ml-2 h-4 w-4 inline -mt-1" aria-hidden="true" />
+                            <ArrowUpRightFromSquare
+                              className="ml-2 h-4 w-4 inline -mt-1"
+                              aria-hidden="true"
+                            />
                           </a>
                         ) : (
                           <Link
@@ -96,7 +106,9 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                                 : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                               'rounded-md py-2 px-3 text-sm font-medium'
                             )}
-                            aria-current={item.href === currentPathname ? 'page' : undefined}
+                            aria-current={
+                              item.href === currentPathname ? 'page' : undefined
+                            }
                           >
                             {item.name}
                           </Link>
@@ -140,13 +152,18 @@ export const TopNavigation: React.FC<TopNavigationProps> = (props: TopNavigation
                         : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                       'block rounded-md py-2 px-3 text-base font-medium'
                     )}
-                    aria-current={item.href === currentPathname ? 'page' : undefined}
+                    aria-current={
+                      item.href === currentPathname ? 'page' : undefined
+                    }
                     target={item.external ? '_blank' : undefined}
                     rel={item.external ? 'noopener noreferrer' : undefined}
                   >
                     {item.name}
                     {item.external ? (
-                      <ArrowUpRightFromSquare className="ml-2 h-4 w-4 inline -mt-1" aria-hidden="true" />
+                      <ArrowUpRightFromSquare
+                        className="ml-2 h-4 w-4 inline -mt-1"
+                        aria-hidden="true"
+                      />
                     ) : null}
                   </Disclosure.Button>
                 ))}

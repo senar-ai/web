@@ -27,7 +27,16 @@ export const rowReducer = (row: string[]) => {
       cellValue = extractGoogleQuery(cellValue)
     } else if (colName === 'ringkasan') {
       cellValue = stripTags(cellValue)
-    } else if (['desa', 'kecamatan', 'kabupaten', 'provinsi', 'negara', 'benua'].includes(colName)) {
+    } else if (
+      [
+        'desa',
+        'kecamatan',
+        'kabupaten',
+        'provinsi',
+        'negara',
+        'benua',
+      ].includes(colName)
+    ) {
       cellValue = cellValue.replace('&amp;', '&')
     }
     prev[colName] = cellValue

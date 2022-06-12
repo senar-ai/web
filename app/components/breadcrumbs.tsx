@@ -5,7 +5,9 @@ import { House } from '../icons/duotone'
 
 export default function Breadcrumbs() {
   const matches = useMatches()
-  const filteredMatches = matches.filter((match) => match.pathname !== '/' || !match.pathname.endsWith('/'))
+  const filteredMatches = matches.filter(
+    (match) => match.pathname !== '/' || !match.pathname.endsWith('/')
+  )
   if (filteredMatches.length && filteredMatches[0].pathname === '/activities') {
     return (
       <nav className="flex" aria-label="Breadcrumbs">
@@ -19,7 +21,15 @@ export default function Breadcrumbs() {
             </div>
           </li>
           {filteredMatches.map(
-            ({ pathname, handle, params }: { pathname: string; handle?: string; params: Record<string, string> }) => (
+            ({
+              pathname,
+              handle,
+              params,
+            }: {
+              pathname: string
+              handle?: string
+              params: Record<string, string>
+            }) => (
               <li key={pathname} className="flex">
                 <div className="flex items-center">
                   <svg
@@ -37,7 +47,9 @@ export default function Breadcrumbs() {
                     className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
                     aria-current={'page'}
                   >
-                    {handle ?? categoriesRecord[params.categorySlug]?.title ?? 'Semua Aktivitas'}
+                    {handle ??
+                      categoriesRecord[params.categorySlug]?.title ??
+                      'Semua Aktivitas'}
                   </Link>
                 </div>
               </li>

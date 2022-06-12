@@ -9,3 +9,6 @@ public/build
 
 # Next.js
 .next/
+
+# Senarai Data
+app/data/*.json

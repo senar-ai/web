@@ -1,7 +1,15 @@
 import * as React from 'react'
 
-export const ArrowUpRightFromSquare = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="img" fill="currentColor" {...props}>
+export const ArrowUpRightFromSquare = (
+  props: React.SVGProps<SVGSVGElement>
+) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M256 64c0-17.67 14.3-32 32-32h128c17.7 0 32 14.33 32 32v128c0 17.7-14.3 32-32 32s-32-14.3-32-32v-50.7L214.6 310.6c-12.5 12.5-32.7 12.5-45.2 0s-12.5-32.7 0-45.2L338.7 96H288c-17.7 0-32-14.33-32-32z"
@@ -16,7 +24,13 @@ export const ArrowUpRightFromSquare = (props: React.SVGProps<SVGSVGElement>) => 
 )
 
 export const Bars = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 448 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M416 128H32c-17.67 0-32-14.3-32-32 0-17.67 14.33-32 32-32h384c17.7 0 32 14.33 32 32 0 17.7-14.3 32-32 32zm0 320H32c-17.67 0-32-14.3-32-32s14.33-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
@@ -31,7 +45,13 @@ export const Bars = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const MagnifyingGlass = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M500.3 443.7 380.6 324a209.293 209.293 0 0 1-56.57 56.57l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0 15.6-15.57 15.6-40.97 0-56.57z"
@@ -46,7 +66,13 @@ export const MagnifyingGlass = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const X = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 384 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       d="M376.6 427.5c11.31 13.58 9.484 33.75-4.094 45.06a31.894 31.894 0 0 1-20.47 7.422c-9.172 0-18.27-3.922-24.59-11.52L192 305.1 56.6 467.6c-6.328 7.594-15.42 11.52-24.59 11.52a31.907 31.907 0 0 1-20.47-7.422c-13.58-11.31-15.41-31.48-4.094-45.06l142.9-171.5L7.422 84.5C-3.891 70.92-2.063 50.75 11.52 39.44c13.56-11.34 33.73-9.516 45.06 4.094L192 206 327.4 43.5c11.3-13.58 31.48-15.42 45.06-4.094 13.58 11.31 15.41 31.48 4.094 45.06l-142.9 171.5L376.6 427.5z"
       style={{
@@ -57,7 +83,13 @@ export const X = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const Grid2Plus = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M408 360h64c13.3 0 24 10.7 24 24s-10.7 24-24 24h-64v64c0 13.3-10.7 24-24 24s-24-10.7-24-24v-64h-64c-13.3 0-24-10.7-24-24s10.7-24 24-24h64v-64c0-13.3 10.7-24 24-24s24 10.7 24 24v64z"
@@ -72,7 +104,13 @@ export const Grid2Plus = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const PenToSquare = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M392.4 21.66c21.9-21.873 57.3-21.873 79.2 0l18.7 18.74c21.9 21.87 21.9 57.33 0 79.2l-30 30.1-98-97.98 30.1-30.06zm45.3 150.64L270.3 339.6c-6.1 6.2-13.6 10.8-21.9 13.6l-88.8 29.6c-9.5 2.8-18.1.6-24.6-6.7-6.4-5.6-8.6-15.1-5.8-23.7l29.6-88.8c2.8-8.3 7.4-15.8 13.6-21.9L339.7 74.34l98 97.96z"
@@ -87,7 +125,13 @@ export const PenToSquare = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const House = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 576 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M266.9 7.918c11.2-10.557 30.1-10.557 42.2 0l256 223.982c13.3 11.7 14.6 31.9 3 45.2-11.7 13.3-31.9 14.6-45.2 3L288 74.52 53.07 280.1c-13.3 11.6-33.51 10.3-45.152-3-11.638-13.3-10.29-33.5 3.012-45.2L266.9 7.918z"
@@ -102,7 +146,13 @@ export const House = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const ChildReaching = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 384 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M155.7 170.2c11.6 2.9 23.9 5.8 36.5 5.8 39.9 0 77.1-20.2 98.8-53.6l18.2-27.86c9.6-14.81 29.4-19 44.3-9.36 14.8 9.64 19 29.42 9.3 44.32l-18.1 27.8c-18.3 28.1-43.5 50-72.7 64.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32v-96h-32v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V221.4c-28.37-14-53.06-35.3-71.13-63.3l-19.5-28.3c-9.8-14.8-5.83-34.62 8.88-44.43 14.7-9.8 34.57-5.83 44.37 8.88l19.5 29.25c14.38 21.5 35.08 37.4 58.78 45.8 1 .2 1.9.5 2.8.9z"
@@ -117,7 +167,13 @@ export const ChildReaching = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const School = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M336 160h16c8.8 0 16 7.2 16 16s-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-32c0-8.8 7.2-16 16-16s16 7.2 16 16v16zM80 208c0-8.8 7.16-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.84 0-16-7.2-16-16v-64zm416 0c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zM128 320c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.84 0-16-7.2-16-16v-64c0-8.8 7.16-16 16-16h32zm368 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64z"
@@ -132,7 +188,13 @@ export const School = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const SchoolFlag = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 576 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M288 0h112c8.8 0 16 7.164 16 16v48c0 8.84-7.2 16-16 16h-80v15.53l-13.4-9.57c-11.1-7.95-26.1-7.95-37.2 0L256 95.53V32c0-17.67 14.3-32 32-32zM64 240c0-8.8 7.16-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H80c-8.84 0-16-7.2-16-16v-64zm384 0c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zM112 352c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H80c-8.84 0-16-7.2-16-16v-64c0-8.8 7.16-16 16-16h32zm336 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64z"
@@ -147,7 +209,13 @@ export const SchoolFlag = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const BuildingColumns = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M492.6 98.59c14 6.01 21.8 21.01 18.7 35.81-3 14.9-16.1 25.6-31.3 25.6v8c0 13.3-10.7 24-24 24H56c-13.25 0-24-10.7-24-24v-8c-15.19-.9-28.289-10.7-31.343-25.6-3.055-14.8 4.776-29.8 18.743-35.81l224-96.003c8-3.45 17.2-3.45 25.2 0l224 96.003zM256 128c17.7 0 32-14.3 32-32 0-17.67-14.3-32-32-32s-32 14.33-32 32c0 17.7 14.3 32 32 32z"
@@ -162,7 +230,13 @@ export const BuildingColumns = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const GraduationCap = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M640 160c0 10.38-6.438 19.65-16.05 23.09l-282.7 101.2a62.951 62.951 0 0 1-42.43 0L108.2 216.1c13.7-15.2 30.9-26.6 52.8-31.9l162.9-40.72c8.594-2.141 13.78-10.83 11.66-19.39-2.125-8.594-10.97-13.89-19.41-11.64L153.3 153.2c-31.9 8-58.7 26.6-77.23 51.4l-60.02-21.5C6.438 179.6 0 170.4 0 160s6.438-19.65 16.05-23.09l282.7-101.2a62.951 62.951 0 0 1 42.43 0l282.7 101.2C633.6 140.4 640 149.6 640 160zM351.1 314.4c-9.4 3.7-20.2 5.6-31.1 5.6a94.767 94.767 0 0 1-32-5.555L142.8 262.5 128 405.3c0 41.3 85.1 74.7 192 74.7 105.1 0 192-33.4 192-74.67l-14.78-142.9L351.1 314.4z"
@@ -177,7 +251,13 @@ export const GraduationCap = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const Briefcase = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M464 96h-80V48c0-25.59-22.4-48-48-48H176c-25.6 0-48 22.41-48 48v48H48c-25.59 0-48 22.4-48 48v144h512V144c0-25.6-22.4-48-48-48zm-128 0H176V48h160v48z"
@@ -192,7 +272,13 @@ export const Briefcase = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const Family = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M256 224c26.53 0 48-21.47 48-48s-21.5-48-48-48-48 21.5-48 48 21.5 48 48 48zm32 32h-64c-26.5 0-48 21.5-48 48v48c0 17.67 14.33 32 32 32v96c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32v-96c17.67 0 32-14.33 32-32v-48c0-26.5-21.5-48-48-48z"
@@ -207,7 +293,13 @@ export const Family = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const PeopleGroup = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M384 96c0 35.3-28.7 64-64 64s-64-28.7-64-64c0-35.35 28.7-64 64-64s64 28.65 64 64zm0 352c0 17.7-14.3 32-32 32h-64c-17.7 0-32-14.3-32-32v-42.8c-37.8-18-64-56.5-64-101.2 0-61.9 50.1-112 112-112h32c61.9 0 112 50.1 112 112 0 44.7-26.2 83.2-64 101.2V448zM256 261.7c-10 11.2-16 26.1-16 42.3 0 16.2 6 31.1 16 42.3v-84.6zM400 304c0-16.2-6.9-31.1-16-42.3v84.6c9.1-11.3 16-26.1 16-42.3z"
@@ -222,7 +314,13 @@ export const PeopleGroup = (props: React.SVGProps<SVGSVGElement>) => (
 )
 
 export const PersonChalkboard = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" role="img" fill="currentColor" {...props}>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 512"
+    role="img"
+    fill="currentColor"
+    {...props}
+  >
     <path
       className="fa-primary"
       d="M320 128V48c0-26.51 21.5-48 48-48h224c26.5 0 48 21.49 48 48v224c0 26.5-21.5 48-48 48H368c-26.5 0-48-21.5-48-48v-48h64v32h192V64H384v64h-64z"
