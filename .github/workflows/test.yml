@@ -6,9 +6,12 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  deploy:
+  lint:
     name: 🔬 Lint
-    if: github.repository == 'senar-ai/web'
+    if:
+      # ignore all-contributors PRs
+      ${{ github.repository == 'senar-ai/web' && !contains(github.head_ref,
+      'all-contributors') }}
     runs-on: ubuntu-latest
     steps:
       - name: 🐑 Clone repository
