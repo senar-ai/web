@@ -1,0 +1,11 @@
+.cache
+build
+node_modules
+coverage
+dist
+
+# Remix
+public/build
+
+# Next.js
+.next/
