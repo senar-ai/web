@@ -1,0 +1,21 @@
+# docs: https://kodiakhq.com/docs/config-reference
+version = 1
+
+[merge]
+
+# docs: https://kodiakhq.com/docs/config-reference#mergedelete_branch_on_merge
+# Once a PR is merged, delete the branch. This option behaves like the GitHub
+# repository setting "Automatically delete head branches", which automatically
+# deletes head branches after pull requests are merged.
+delete_branch_on_merge = true
+
+# docs: https://kodiakhq.com/docs/recipes#better-merge-messages
+[merge.message]
+title = "pull_request_title"
+include_pr_number = true
+
+# docs: https://kodiakhq.com/docs/recipes#adding-pull-request-approvals-to-dependabot-pull-requests
+[approve]
+# note: remove the "[bot]" suffix from GitHub Bot usernames.
+# Instead of "dependabot[bot]" use "dependabot".
+auto_approve_usernames = ["allcontributors", "zainfathoni"]
