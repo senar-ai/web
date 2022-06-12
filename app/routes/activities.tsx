@@ -15,7 +15,9 @@ export default function Activities() {
 
   const [keyword, setKeyword] = React.useState('')
   const filteredActivities = activities.filter((activity) => {
-    const isInCategory = categorySlug ? activity.categorySlug === categorySlug : true
+    const isInCategory = categorySlug
+      ? activity.categorySlug === categorySlug
+      : true
     if (keyword) {
       return (
         activity.nama.toLowerCase().includes(keyword.toLowerCase()) ||

@@ -25,7 +25,8 @@ export const contacts: Contacts = [
   {
     name: 'Adhi Utama',
     role: 'Data Analytics',
-    description: 'We want our children to be able to take challenges, to take risk, to be able to climb',
+    description:
+      'We want our children to be able to take challenges, to take risk, to be able to climb',
     platform: 'LinkedIn',
     link: 'https://www.linkedin.com/in/adhi-utama/',
     image: '/images/adhi.jpg',

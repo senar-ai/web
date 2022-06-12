@@ -3,11 +3,11 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "0 9 * * *"
+    - cron: '0 9 * * *'
 
 jobs:
   deploy:
-    name: 🤸🏽 build & deploy
+    name: 🤸🏽 Build & Deploy
     if: github.repository == 'senar-ai/web'
     runs-on: ubuntu-latest
     permissions:
@@ -30,7 +30,7 @@ jobs:
 
       - name: 📂 Make deno dir
         run: mkdir -p ./deno
-      
+
       - name: 📝 Copy Remix build files into output dir
         run: cp -R ./{build,public} ./deno
 
@@ -38,5 +38,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: senarai # the name of the project on Deno Deploy
-          entrypoint: "./build/index.js" # the entrypoint to deploy
-          root: "./deno" # the root directory of the build assets
+          entrypoint: './build/index.js' # the entrypoint to deploy
+          root: './deno' # the root directory of the build assets

@@ -1,0 +1,14 @@
+.cache
+build
+node_modules
+coverage
+dist
+
+# Remix
+public/build
+
+# Remix with Deno
+server.ts
+
+# Next.js
+.next/

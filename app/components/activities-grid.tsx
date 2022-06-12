@@ -11,34 +11,41 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
   const matches = useMatches()
   const categorySlug = matches[matches.length - 1].params?.categorySlug
   const category = getCategoryByCategorySlug(categorySlug)
-  const addNewActivityLink = `${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(category.title)}`
+  const addNewActivityLink = `${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(
+    category.title
+  )}`
   if (activities.length) {
     return (
-      <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {activities.map(({ id, nama, link, ringkasan, image, usia, categorySlug }) => {
-          const { icon, iconForeground, iconBackground, title } = getCategoryByCategorySlug(categorySlug)
-          return (
-            <Card
-              key={id}
-              name={nama}
-              cta="Kunjungi"
-              link={link}
-              secondaryCta="Koreksi"
-              secondaryLink={`${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(
-                usia
-              )}&entry.105812429=${encodeURIComponent(nama)}&entry.1084985767=${encodeURIComponent(
-                ringkasan
-              )}&entry.1503344235=${encodeURIComponent(link)}`}
-              description={ringkasan}
-              image={image}
-              category={title}
-              categorySlug={categorySlug}
-              icon={icon}
-              foregroundColor={iconForeground}
-              backgroundColor={iconBackground}
-            />
-          )
-        })}
+      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {activities.map(
+          ({ id, nama, link, ringkasan, image, usia, categorySlug }) => {
+            const { icon, iconForeground, iconBackground, title } =
+              getCategoryByCategorySlug(categorySlug)
+            return (
+              <Card
+                key={id}
+                name={nama}
+                cta="Kunjungi"
+                link={link}
+                secondaryCta="Koreksi"
+                secondaryLink={`${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(
+                  usia
+                )}&entry.105812429=${encodeURIComponent(
+                  nama
+                )}&entry.1084985767=${encodeURIComponent(
+                  ringkasan
+                )}&entry.1503344235=${encodeURIComponent(link)}`}
+                description={ringkasan}
+                image={image}
+                category={title}
+                categorySlug={categorySlug}
+                icon={icon}
+                foregroundColor={iconForeground}
+                backgroundColor={iconBackground}
+              />
+            )
+          }
+        )}
         <Card
           name="Tambah Aktivitas Baru"
           description={`Usulkan aktivitas baru untuk kategori ${category.title}`}
@@ -63,9 +70,12 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
         >
           <category.icon className="w-16 h-16 flex-shrink-0 mx-auto " />
         </div>
-        <h3 className="mt-2 text-sm font-medium text-gray-900">Belum ada aktivitas {category.title}</h3>
+        <h3 className="mt-2 text-sm font-medium text-gray-900">
+          Belum ada aktivitas {category.title}
+        </h3>
         <p className="mt-1 text-sm text-gray-500">
-          Ada usulan? Silakan tambahkan aktivitas untuk {category.description} melalui formulir berikut ini.
+          Ada usulan? Silakan tambahkan aktivitas untuk {category.description}{' '}
+          melalui formulir berikut ini.
         </p>
         <div className="mt-6">
           <a

@@ -66,16 +66,23 @@ export async function fetchDatabase() {
     })
     .toArray()
 
-  fs.writeFileSync(path.resolve(__dirname, '../data/senarai-db.json'), JSON.stringify(sheetList))
+  fs.writeFileSync(
+    path.resolve(__dirname, '../data/senarai-db.json'),
+    JSON.stringify(sheetList)
+  )
 }
 
 ;(function fetchSenarai() {
   const start = process.hrtime()
-  const spinner = ora(`${chalk.yellowBright('Fetching Senarai database...')}`).start()
+  const spinner = ora(
+    `${chalk.yellowBright('Fetching Senarai database...')}`
+  ).start()
   fetchDatabase()
     .then(() => {
       const end = `${toSecond(process.hrtime(start))} seconds`
-      spinner.succeed(`Fetching Senarai database is done in ${chalk.greenBright(end)}`)
+      spinner.succeed(
+        `Fetching Senarai database is done in ${chalk.greenBright(end)}`
+      )
     })
     .catch((err) => {
       chalk.red(err)
