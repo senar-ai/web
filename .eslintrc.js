@@ -1,1 +1,1 @@
-module.exports = require('pkode/dist/config/eslintrc')
+module.exports = require('pkode/eslint')

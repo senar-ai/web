@@ -1,3 +1,1 @@
-'use strict'
-
-module.exports = require('pkode/dist/config/prettierrc')
+module.exports = require('pkode/prettier')
