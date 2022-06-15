@@ -14,7 +14,7 @@ export type CardProps = {
   category: string
   categorySlug?: string
   image?: string
-  icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
+  icon?: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
   foregroundColor?: string
   backgroundColor?: string
 }

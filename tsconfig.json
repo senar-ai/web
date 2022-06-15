@@ -1,4 +1,4 @@
 {
   "extends": "./node_modules/pkode/base-tsconfig.json",
-  "include": ["global.d.ts", "app/**/*.ts", "app/**/*.tsx"]
+  "include": ["remix.env.d.ts", "app/**/*.ts", "app/**/*.tsx"]
 }
