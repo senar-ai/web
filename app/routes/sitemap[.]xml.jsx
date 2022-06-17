@@ -8,7 +8,7 @@ export const loader = async ({ request }) => {
   }
 
   // TODO: updated the lastModified logic
-  const lastModified = new Date().toUTCString()
+  const lastModified = '2022-06-17'
   const rssString = `
 <?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
