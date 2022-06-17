@@ -20,4 +20,4 @@ export type Activity = {
   readonly image?: string
 }
 
-export const activities = database[0].data as Activities
+export const activities = database[0].data as unknown as Activities
