@@ -70,6 +70,15 @@ export async function fetchDatabase() {
     path.resolve(__dirname, '../data/senarai-db.json'),
     JSON.stringify(sheetList)
   )
+  const date = new Date()
+  const monthPad = (date.getMonth() + 1).toString().padStart(2, '0')
+  const datePad = date.getDate().toString().padStart(2, '0')
+  fs.writeFileSync(
+    path.resolve(__dirname, '../data/timestamp.json'),
+    JSON.stringify({
+      lastUpdated: date.getFullYear() + '-' + monthPad + '-' + datePad,
+    })
+  )
 }
 
 ;(function fetchSenarai() {
