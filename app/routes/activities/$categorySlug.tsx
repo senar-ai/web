@@ -7,9 +7,12 @@ import { ActivitiesContextType } from '../activities'
 
 export const meta: MetaFunction = ({ params: { categorySlug } }) => {
   const category = getCategoryByCategorySlug(categorySlug)
+  const description = `Daftar aktivitas ${category.description}`
   return {
     title: `Senarai | Aktivitas ${category.title}`,
-    description: `Daftar aktivitas ${category.description}`,
+    description,
+    'og:description': description,
+    'twitter:description': description,
   }
 }
 
