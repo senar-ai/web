@@ -6,3 +6,9 @@ node_modules
 .env
 
 /app/tailwind.css
+
+# Prisma
+/prisma/dev.db
+/prisma/test.db
+/prisma/*.db-journal
+/prisma/dumps/*
