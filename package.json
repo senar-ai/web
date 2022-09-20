@@ -2,6 +2,9 @@
   "name": "remix-template-deno",
   "private": true,
   "sideEffects": false,
+  "prisma": {
+    "seed": "node --require esbuild-register prisma/seed.ts"
+  },
   "scripts": {
     "generate:css": "npx tailwindcss -o ./app/tailwind.css",
     "build": "run-s build:*",
