@@ -1,5 +1,5 @@
 {
-  "name": "remix-template-deno",
+  "name": "senar.ai",
   "private": true,
   "sideEffects": false,
   "prisma": {
