@@ -70,9 +70,9 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
         >
           <category.icon className="w-16 h-16 flex-shrink-0 mx-auto " />
         </div>
-        <h3 className="mt-2 text-sm font-medium text-gray-900">
+        <h2 className="mt-2 text-sm font-medium text-gray-900">
           Belum ada aktivitas {category.title}
-        </h3>
+        </h2>
         <p className="mt-1 text-sm text-gray-500">
           Ada usulan? Silakan tambahkan aktivitas untuk {category.description}{' '}
           melalui formulir berikut ini.
