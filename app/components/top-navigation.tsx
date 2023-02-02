@@ -21,6 +21,7 @@ const navigation = [
 ]
 
 export type TopNavigationProps = {
+  id: string
   keyword: string
   setKeyword: (keyword: string) => void
 }
@@ -36,7 +37,7 @@ const SearchBar = (props: TopNavigationProps) => {
           <MagnifyingGlass className="h-5 w-5" aria-hidden="true" />
         </div>
         <input
-          id="search"
+          id={props.id}
           className="block w-full bg-white py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-indigo-600 focus:ring-white focus:border-white sm:text-sm"
           placeholder="Cari"
           type="search"
@@ -118,7 +119,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
                   </div>
                 </div>
                 <div className="flex-1 px-2 hidden lg:ml-6 lg:flex lg:justify-end">
-                  <SearchBar {...props} />
+                  <SearchBar id="search" {...props} />
                 </div>
                 <div className="flex lg:hidden">
                   {/* Mobile menu button */}
@@ -137,7 +138,7 @@ export const TopNavigation: React.FC<TopNavigationProps> = (
             <Disclosure.Panel className="lg:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
                 <div className="mb-4 w-full">
-                  <SearchBar {...props} />
+                  <SearchBar id="search-mobile" {...props} />
                 </div>
                 {navigation.map((item) => (
                   <Disclosure.Button
