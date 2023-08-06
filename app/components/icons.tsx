@@ -1,6 +1,8 @@
 import * as React from 'react'
 
-export function Duotone({ id, ...props }) {
+type IconProps = React.SVGProps<SVGSVGElement> & { id: string }
+
+export function Duotone({ id, ...props }: IconProps) {
   return (
     <svg {...props}>
       <use href={`/images/duotone.svg#${id}`} />
@@ -8,7 +10,7 @@ export function Duotone({ id, ...props }) {
   )
 }
 
-export function Light({ id, ...props }) {
+export function Light({ id, ...props }: IconProps) {
   return (
     <svg {...props}>
       <use href={`/images/light.svg#${id}`} />
@@ -16,7 +18,7 @@ export function Light({ id, ...props }) {
   )
 }
 
-export function Solid({ id, ...props }) {
+export function Solid({ id, ...props }: IconProps) {
   return (
     <svg {...props}>
       <use href={`/images/solid.svg#${id}`} />
