@@ -1,5 +1,7 @@
 import { useMatches } from '@remix-run/react'
 import * as React from 'react'
+import AutoSizer from 'react-virtualized-auto-sizer'
+import { VariableSizeGrid } from 'react-window'
 import type { Activity } from '../model/activities'
 import { getCategoryByCategorySlug } from '../model/categories'
 import { classNames } from '../utils/class-names'
@@ -15,6 +17,93 @@ export function ActivitesGrid({ activities }: { activities: Activity[] }) {
     category.title
   )}`
   if (activities.length) {
+    const COLUMN_COUNT = 3 // TODO: Make it responsive
+    const MIN_ROW_HEIGHT = 270
+    const Cell = ({ columnIndex, rowIndex, style }) => {
+      const activity = activities[rowIndex * COLUMN_COUNT + columnIndex]
+      if (!activity) {
+        // Last item
+        if (rowIndex * COLUMN_COUNT + columnIndex === activities.length) {
+          return (
+            <div style={style}>
+              <Card
+                name="Tambah Aktivitas Baru"
+                description={`Usulkan aktivitas baru untuk kategori ${category.title}`}
+                cta="Usulkan"
+                category={category.title}
+                link={addNewActivityLink}
+                iconSet="duotone"
+                iconId="grid-2-plus"
+                foregroundColor={category.iconForeground}
+                backgroundColor={category.iconBackground}
+              />
+            </div>
+          )
+        } else {
+          return null
+        }
+      }
+      const { id, nama, link, ringkasan, image, usia, categorySlug } = activity
+      const { iconSet, iconId, iconForeground, iconBackground, title } =
+        getCategoryByCategorySlug(categorySlug)
+      return (
+        <div style={style}>
+          <Card
+            key={id}
+            name={nama}
+            cta="Kunjungi"
+            link={link}
+            secondaryCta="Koreksi"
+            secondaryLink={`${senaraiForm}?usp=pp_url&entry.1040472985=${encodeURIComponent(
+              usia
+            )}&entry.105812429=${encodeURIComponent(
+              nama
+            )}&entry.1084985767=${encodeURIComponent(
+              ringkasan
+            )}&entry.1503344235=${encodeURIComponent(link)}`}
+            description={ringkasan}
+            image={image}
+            category={title}
+            categorySlug={categorySlug}
+            iconSet={iconSet}
+            iconId={iconId}
+            foregroundColor={iconForeground}
+            backgroundColor={iconBackground}
+          />
+        </div>
+      )
+    }
+    return (
+      <div style={{ height: '88vh' }} className="container mx-auto">
+        <AutoSizer>
+          {({ height, width }) => (
+            <VariableSizeGrid
+              columnCount={COLUMN_COUNT}
+              columnWidth={() => width / COLUMN_COUNT}
+              height={height}
+              rowCount={Math.ceil(activities.length / COLUMN_COUNT)}
+              rowHeight={(index) => {
+                const activitiesInRow = activities.slice(
+                  index * COLUMN_COUNT,
+                  index * COLUMN_COUNT + COLUMN_COUNT
+                )
+                let maxHeight = MIN_ROW_HEIGHT
+                activitiesInRow.forEach((activity) => {
+                  maxHeight = Math.max(
+                    maxHeight,
+                    activity.ringkasan.length * 1 + MIN_ROW_HEIGHT
+                  )
+                })
+                return maxHeight
+              }}
+              width={width}
+            >
+              {Cell}
+            </VariableSizeGrid>
+          )}
+        </AutoSizer>
+      </div>
+    )
     return (
       <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {activities.map(
