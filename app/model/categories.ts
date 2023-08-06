@@ -1,28 +1,11 @@
-import {
-  ChildReaching,
-  School,
-  SchoolFlag,
-  BuildingColumns,
-  GraduationCap,
-  Briefcase,
-  PeopleGroup,
-  Family,
-  PersonChalkboard,
-} from '../icons/duotone'
-import {
-  ChildReaching as LChildReaching,
-  School as LSchool,
-  SchoolFlag as LSchoolFlag,
-  BuildingColumns as LBuildingColumns,
-} from '../icons/light'
-
 export type Categories = Category[]
 
 export type Category = {
   title: string
   slug: string
   description: string
-  icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
+  iconSet: 'duotone' | 'light'
+  iconId: string
   iconForeground: string
   iconBackground: string
 }
@@ -31,7 +14,8 @@ export const categories: Categories = [
   {
     title: 'PAUD',
     slug: 'paud',
-    icon: LChildReaching,
+    iconSet: 'light',
+    iconId: 'child-reaching',
     description: 'Pendidikan Anak Usia Dini',
     iconForeground: 'text-teal-700',
     iconBackground: 'bg-teal-50',
@@ -40,7 +24,8 @@ export const categories: Categories = [
     title: 'PAUD ke atas',
     slug: 'paud-ke-atas',
     description: 'Usia tiga tahun ke atas',
-    icon: ChildReaching,
+    iconSet: 'duotone',
+    iconId: 'child-reaching',
     iconForeground: 'text-teal-700',
     iconBackground: 'bg-teal-50',
   },
@@ -48,7 +33,8 @@ export const categories: Categories = [
     title: 'SD',
     slug: 'sd',
     description: 'Sekolah Dasar',
-    icon: LSchool,
+    iconSet: 'light',
+    iconId: 'school',
     iconForeground: 'text-purple-700',
     iconBackground: 'bg-purple-50',
   },
@@ -56,7 +42,8 @@ export const categories: Categories = [
     title: 'SD ke atas',
     slug: 'sd-ke-atas',
     description: 'Usia enam tahun ke atas',
-    icon: School,
+    iconSet: 'duotone',
+    iconId: 'school',
     iconForeground: 'text-purple-700',
     iconBackground: 'bg-purple-50',
   },
@@ -64,7 +51,8 @@ export const categories: Categories = [
     title: 'SMP',
     slug: 'smp',
     description: 'Sekolah Menengah Pertama',
-    icon: LSchoolFlag,
+    iconSet: 'light',
+    iconId: 'school-flag',
     iconForeground: 'text-sky-700',
     iconBackground: 'bg-sky-50',
   },
@@ -72,7 +60,8 @@ export const categories: Categories = [
     title: 'SMP ke atas',
     slug: 'smp-ke-atas',
     description: 'Usia 12 tahun ke atas',
-    icon: SchoolFlag,
+    iconSet: 'duotone',
+    iconId: 'school-flag',
     iconForeground: 'text-sky-700',
     iconBackground: 'bg-sky-50',
   },
@@ -80,7 +69,8 @@ export const categories: Categories = [
     title: 'SMA',
     slug: 'sma',
     description: 'Sekolah Menengah Atas',
-    icon: LBuildingColumns,
+    iconSet: 'light',
+    iconId: 'building-columns',
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
   },
@@ -88,7 +78,8 @@ export const categories: Categories = [
     title: 'SMA ke atas',
     slug: 'sma-ke-atas',
     description: 'Usia 15 tahun ke atas',
-    icon: BuildingColumns,
+    iconSet: 'duotone',
+    iconId: 'building-columns',
     iconForeground: 'text-yellow-700',
     iconBackground: 'bg-yellow-50',
   },
@@ -96,7 +87,8 @@ export const categories: Categories = [
     title: 'Kuliah',
     slug: 'kuliah',
     description: 'Perguruan Tinggi',
-    icon: GraduationCap,
+    iconSet: 'duotone',
+    iconId: 'graduation-cap',
     iconForeground: 'text-indigo-700',
     iconBackground: 'bg-indigo-50',
   },
@@ -104,7 +96,8 @@ export const categories: Categories = [
     title: 'Profesional',
     slug: 'profesional',
     description: 'Pekerja Profesional',
-    icon: Briefcase,
+    iconSet: 'duotone',
+    iconId: 'briefcase',
     iconForeground: 'text-rose-700',
     iconBackground: 'bg-rose-50',
   },
@@ -112,7 +105,8 @@ export const categories: Categories = [
     title: 'Semua Usia',
     slug: 'semua-usia',
     description: 'Untuk semua kalangan',
-    icon: PeopleGroup,
+    iconSet: 'duotone',
+    iconId: 'people-group',
     iconForeground: 'text-lime-700',
     iconBackground: 'bg-lime-50',
   },
@@ -120,7 +114,8 @@ export const categories: Categories = [
     title: 'For Parents',
     slug: 'for-parents',
     description: 'Untuk dipelajari oleh orang tua',
-    icon: Family,
+    iconSet: 'duotone',
+    iconId: 'family',
     iconForeground: 'text-emerald-700',
     iconBackground: 'bg-emerald-50',
   },
@@ -135,7 +130,8 @@ const uncategorized: Category = {
   title: 'Belum Terkategorikan',
   slug: 'belum-terkategorikan',
   description: 'Belum teridentifikasi untuk kategori usia tertentu',
-  icon: PersonChalkboard,
+  iconSet: 'duotone',
+  iconId: 'person-chalkboard',
   iconForeground: 'text-amber-700',
   iconBackground: 'bg-amber-50',
 }

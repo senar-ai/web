@@ -159,13 +159,11 @@ npm run deploy
 ### How to use FontAwesome in the project
 
 1. Search [FontAwesome Icons](https://fontawesome.com/icons)
-2. Download the SVG code (if it's a Pro icon, please ask @zainfathoni to
-   download it for you)
-3. Paste the SVG code into the `SVG INPUT` panel of
-   [SVGR with these params](https://react-svgr.com/playground/?svgProps=role%3Dimg%2Cfill%3DcurrentColor&typescript=true)
-4. Copy the resulting `<svg>` tag in the `JSX OUTPUT` panel
-5. Paste the `<svg>` tag into the corresponding file under the
-   [icons](/app/icons/) directory
+2. Include the icons in the
+   [senarai](https://fontawesome.com/kits/5899c9809d/icons) icon kit. (please
+   ask @zainfathoni to do it for you)
+3. Upload the new SVG sprites to the `/public/images/` directory
+4. Use the `<Icon />` component and pass the icon set and id as props
 
 ## Frequently Used Commands
 

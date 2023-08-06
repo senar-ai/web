@@ -1,8 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
-import * as React from 'react'
 import { Link } from '@remix-run/react'
+import * as React from 'react'
 import { classNames } from '../utils/class-names'
-import { ArrowUpRightFromSquare, PenToSquare } from '../icons/duotone'
+import { Icon } from './icon'
 
 export type CardProps = {
   name: string
@@ -14,7 +14,8 @@ export type CardProps = {
   category: string
   categorySlug?: string
   image?: string
-  icon?: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement
+  iconSet?: string
+  iconId?: string
   foregroundColor?: string
   backgroundColor?: string
 }
@@ -29,7 +30,8 @@ export const Card: React.FC<CardProps> = ({
   image,
   category,
   categorySlug,
-  icon: Icon,
+  iconSet,
+  iconId,
   foregroundColor: iconForeground,
   backgroundColor: iconBackground,
 }) => {
@@ -42,8 +44,10 @@ export const Card: React.FC<CardProps> = ({
             src={image}
             alt=""
           />
-        ) : Icon ? (
+        ) : iconSet && iconId ? (
           <Icon
+            set={iconSet}
+            id={iconId}
             className={classNames(
               iconForeground,
               'w-16 h-16 flex-shrink-0 mx-auto'
@@ -92,7 +96,9 @@ export const Card: React.FC<CardProps> = ({
                 rel="noopener noreferrer"
                 className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
               >
-                <PenToSquare
+                <Icon
+                  set="duotone"
+                  id="arrow-up-right-from-square"
                   className="w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
@@ -113,7 +119,9 @@ export const Card: React.FC<CardProps> = ({
                 className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
               >
                 <span className="mr-3">{cta}</span>
-                <ArrowUpRightFromSquare
+                <Icon
+                  set="duotone"
+                  id="arrow-up-right-from-square"
                   className="w-5 h-5 text-gray-400"
                   aria-hidden="true"
                 />
