@@ -1,7 +1,8 @@
-import * as React from 'react'
 import { Link } from '@remix-run/react'
-import { classNames } from '../utils/class-names'
+import * as React from 'react'
 import { Categories } from '../model/categories'
+import { classNames } from '../utils/class-names'
+import { Icon } from './icon'
 
 export function ActionCards({ categories }: { categories: Categories }) {
   return (
@@ -29,7 +30,11 @@ export function ActionCards({ categories }: { categories: Categories }) {
                 'rounded-lg inline-flex p-3 ring-4 ring-white'
               )}
             >
-              <category.icon className="h-6 w-6" />
+              <Icon
+                set={category.iconSet}
+                id={category.iconId}
+                className="h-6 w-6"
+              />
             </span>
           </div>
           <div className="mt-8">
