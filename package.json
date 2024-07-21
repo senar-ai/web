@@ -17,6 +17,7 @@
     "dev:deno": "cross-env NODE_ENV=development deno run --unstable --watch --allow-net --allow-read --allow-env ./build/index.js",
     "dev:remix": "remix watch",
     "fetch": "node --require esbuild-register app/scripts/fetch-db.ts",
+    "fetch:exam": "node --require esbuild-register app/scripts/fetch-exam-db.ts",
     "format": "pkode format",
     "lint": "pkode lint",
     "lint:deno": "deno lint server.ts",
