@@ -158,12 +158,37 @@ npm run deploy
 
 ### How to use FontAwesome in the project
 
+This project uses **SVG sprites** with FontAwesome icons through a custom `<Icon />` component system.
+
+#### Adding New Icons
+
 1. Search [FontAwesome Icons](https://fontawesome.com/icons)
 2. Include the icons in the
    [senarai](https://fontawesome.com/kits/5899c9809d/icons) icon kit. (please
    ask @zainfathoni to do it for you)
 3. Upload the new SVG sprites to the `/public/images/` directory
 4. Use the `<Icon />` component and pass the icon set and id as props
+
+#### Usage
+
+**Component Location**: `app/components/icon.tsx`
+
+```tsx
+import { Icon } from '~/components/icon'
+
+<Icon 
+  set="solid"           // "solid" | "light" | "duotone"
+  id="chevron-right"    // FontAwesome icon name
+  className="h-6 w-6"   // Standard SVG props
+/>
+```
+
+#### Technical Details
+
+- **Sprite Files**: Located in `/public/images/` (solid.svg, light.svg, duotone.svg)
+- **Implementation**: Uses SVG `<use>` element to reference sprite symbols
+- **Styling**: Icons inherit color via `fill="currentColor"`
+- **Performance**: All icons in a set load as single HTTP request
 
 ## Frequently Used Commands
 
