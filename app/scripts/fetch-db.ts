@@ -2,69 +2,70 @@ import fs from 'fs'
 import path from 'path'
 import chalk from 'chalk'
 import ora from 'ora'
-import { load } from 'cheerio'
 import fetch from 'cross-fetch'
 import { isAllEmptyString, getKebabCase, toSecond } from '../utils/string'
 import { rowReducer } from '../utils/google-sheets'
 
-export async function fetchDatabase() {
-  const source = await fetch('https://zainf.dev/senarai-db')
-  const $ = load(await source.text())
-
-  const colMap: Record<string, string> = {}
-
-  const sheetList = $('#sheet-menu > li')
-    .map((_, li) => {
-      const sheetId = ($(li).attr('id') as string).replace('sheet-button-', '')
-      const sheetName = $(li).text()
-      const sheetColumns = $(`#${sheetId} tbody > tr:nth-child(1)`)
-        .find('td')
-        .map((colIndex, td) => {
-          colMap[colIndex] = $(td).text()
-          return {
-            name: $(td).text(),
-            index: colIndex,
-          }
-        })
-        .toArray()
-        .filter((col) => col.name.trim().length !== 0)
-      const sheetRows = $(`#${sheetId} tbody > tr`)
-        .map((rowIndex, tr) => {
-          if (rowIndex === 0) {
-            return []
-          }
-          return [
-            $(tr)
-              .find('td')
-              .map((colIndex, td) => {
-                if (colMap[colIndex]) {
-                  // Kebutuhan, Keterangan, Lokasi, & Penyedia aren't supposed to be linked
-                  if (colIndex < 5) {
-                    return $(td).text().trim()
-                  } else {
-                    return ($(td).html() as string).trim()
-                  }
-                }
-                return ''
-              })
-              .toArray(),
-          ]
-        })
-        .toArray()
-        .filter((row) => !isAllEmptyString(row))
-
-      return {
-        id: sheetId,
-        name: sheetName,
-        slug: getKebabCase(sheetName),
-        data: sheetRows.map((row, rowIndex) => {
-          return sheetColumns.reduce(rowReducer(row), {
-            id: rowIndex.toString(),
-          })
-        }),
+function parseCSV(csv: string): string[][] {
+  const lines = csv.trim().split('\n')
+  const result: string[][] = []
+  
+  for (const line of lines) {
+    const row: string[] = []
+    let current = ''
+    let inQuotes = false
+    
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i]
+      
+      if (char === '"' && (i === 0 || line[i - 1] === ',')) {
+        inQuotes = true
+      } else if (char === '"' && inQuotes && (i === line.length - 1 || line[i + 1] === ',')) {
+        inQuotes = false
+      } else if (char === ',' && !inQuotes) {
+        row.push(current.trim())
+        current = ''
+      } else {
+        current += char
       }
+    }
+    row.push(current.trim())
+    result.push(row)
+  }
+  
+  return result
+}
+
+export async function fetchDatabase() {
+  const source = await fetch('https://docs.google.com/spreadsheets/d/1-nl7RHGsQwF12GzGfj22YJiqlwLjm1ix-hqcR1mJxWs/export?format=csv&gid=0')
+  const csvText = await source.text()
+  
+  const rows = parseCSV(csvText)
+  if (rows.length === 0) {
+    throw new Error('No data found in CSV')
+  }
+  
+  const headers = rows[0]
+  const dataRows = rows.slice(1).filter(row => !isAllEmptyString(row))
+  
+  const sheetColumns = headers.map((header, index) => ({
+    name: header,
+    index: index,
+  })).filter((col) => col.name.trim().length !== 0)
+  
+  const sheetData = dataRows.map((row, rowIndex) => {
+    return sheetColumns.reduce(rowReducer(row), {
+      id: rowIndex.toString(),
     })
-    .toArray()
+  })
+
+  const sheetName = 'Kegiatan'
+  const sheetList = [{
+    id: 'kegiatan',                    // Raw ID (mimicking old sheet ID)
+    name: sheetName,                   // Raw sheet name
+    slug: getKebabCase(sheetName),     // Only slug gets kebab-cased
+    data: sheetData,
+  }]
 
   fs.writeFileSync(
     path.resolve(__dirname, '../data/senarai-db.json'),
