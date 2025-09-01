@@ -36,7 +36,7 @@ export const Card: React.FC<CardProps> = ({
   backgroundColor: iconBackground,
 }) => {
   return (
-    <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200">
+    <li className="col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200 m-2">
       <div className="flex-1 flex flex-col p-8">
         {image ? (
           <img
