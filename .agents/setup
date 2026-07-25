@@ -28,9 +28,6 @@ fi
 export DENO_INSTALL="$deno_install"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-echo "Caching Deno dependencies..."
-deno cache --lock=deno.lock https://deno.land/std@0.128.0/http/server.ts
-
 if [[ ! -f .env ]]; then
   echo "Creating .env from .env.example..."
   cp -- .env.example .env

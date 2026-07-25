@@ -19,6 +19,7 @@ For more, check out the [Remix docs](https://remix.run/docs).
   - [Deployment](#deployment)
   - [Setting up Deno Deploy](#setting-up-deno-deploy)
     - [Deploying to Deno Deploy](#deploying-to-deno-deploy)
+    - [Scheduled data refresh](#scheduled-data-refresh)
   - [Useful resources](#useful-resources)
     - [How to use FontAwesome in the project](#how-to-use-fontawesome-in-the-project)
   - [Frequently Used Commands](#frequently-used-commands)
@@ -105,54 +106,55 @@ deploying to [Deno Deploy](https://deno.com/deploy).
 
 ## Setting up Deno Deploy
 
-1. [Sign up](https://dash.deno.com/signin) for Deno Deploy.
+Deploy Classic projects are not transferred automatically. To configure this
+app on the current Deno Deploy platform:
 
-2. [Create a new Deno Deploy project](https://dash.deno.com/new) for this app.
+1. Sign in at [console.deno.com](https://console.deno.com) and create an
+   organization.
+2. Create a new app and connect the `senar-ai/web` GitHub repository. Grant the
+   Deno Deploy GitHub app access to the repository if it is not listed.
+3. Keep the app directory at the repository root. Build configuration is read
+   from [`deno.json`](./deno.json): dependencies are installed with `npm ci`,
+   the app is built with `npm run build`, and `build/index.js` is run as a
+   dynamic app. The GitHub integration builds pushes and preview branches; no
+   push deployment workflow is required.
+4. If the Classic app uses environment variables, recreate each one in the new
+   app settings and assign it to the appropriate Production, Development, and/or
+   Build contexts. This app currently requires none for its build or runtime.
+5. If the Classic app uses a custom domain, add it to the new app, configure the
+   `_acme-challenge` CNAME shown by the dashboard, then update the domain's
+   CNAME/ANAME. Allow up to 48 hours for propagation before removing it from
+   Deploy Classic.
 
-3. Replace `<your deno deploy project>` in the `deploy` script in `package.json`
-   with your Deno Deploy project name:
-
-   ```json
-   {
-     "scripts": {
-       "deploy": "deployctl deploy --project=<your deno deploy project> --include=.cache,build,public ./build/index.js"
-     }
-   }
-   ```
-
-4. [Create a personal access token](https://dash.deno.com/account) for the Deno
-   Deploy API and export it as `DENO_DEPLOY_TOKEN`:
-
-   ```sh
-   export DENO_DEPLOY_TOKEN=<your Deno Deploy API token>
-   ```
-
-   You may want to add this to your `rc` file (e.g. `.bashrc` or `.zshrc`) to
-   make it available for new terminal sessions, but make sure you don't commit
-   this token into `git`. If you want to use this token in GitHub Actions, set
-   it as a GitHub secret.
-
-5. Install the Deno Deploy CLI,
-   [`deployctl`](https://github.com/denoland/deployctl):
-
-   ```sh
-   deno install --allow-read --allow-write --allow-env --allow-net --allow-run --no-check -r -f https://deno.land/x/deploy/deployctl.ts
-   ```
-
-6. If you have previously installed the Deno Deploy CLI, you should update it to
-   the latest version:
-
-```sh
-deployctl upgrade
-```
+The app does not use Deno KV, queues, or application cron jobs, so no data or API
+migration is required for those services.
 
 ### Deploying to Deno Deploy
 
-After you've set up Deno Deploy, run:
+Normal production and preview deployments are handled by the GitHub integration.
+For a manual deployment, authenticate and select the new app once:
 
 ```sh
+deno deploy switch
 npm run deploy
 ```
+
+`deno deploy` prompts for browser authentication and stores its token in the
+system keyring. For non-interactive use, provide `DENO_DEPLOY_TOKEN` instead.
+Never commit a deploy token.
+
+### Scheduled data refresh
+
+The app fetches its public directory data during each build. The
+`Scheduled Deploy` workflow preserves the existing daily refresh at 09:00 UTC
+while push deployments are handled by Deno Deploy itself. Configure these
+GitHub Actions settings after creating the app:
+
+- Repository secret `DENO_DEPLOY_TOKEN`: a token accepted by `deno deploy`
+- Repository variable `DENO_DEPLOY_ORG`: the new organization slug
+- Repository variable `DENO_DEPLOY_APP`: the new app slug
+
+The workflow can also be run manually from the Actions tab.
 
 ## Useful resources
 

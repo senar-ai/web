@@ -1,42 +1,28 @@
-name: 🤸🏽 Build & Deploy
+name: 🤸🏽 Scheduled Deploy
 on:
-  push:
-    branches: [main]
   schedule:
     - cron: '0 9 * * *'
+  workflow_dispatch:
 
 jobs:
   deploy:
-    name: 🤸🏽 Build & Deploy
+    name: 🤸🏽 Refresh Data & Deploy
     if: github.repository == 'senar-ai/web'
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # This is required to allow the GitHub Action to authenticate with Deno Deploy.
       contents: read
     steps:
       - name: 🐑 Clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: 🦀 Setup Node
-        uses: actions/setup-node@v3
+      - name: 🦕 Setup Deno
+        uses: denoland/setup-deno@v2
         with:
-          node-version: 16
-
-      - name: ⛓ Install Node deps
-        uses: bahmutov/npm-install@v1
-
-      - name: 💿 Remix Build
-        run: npm run build
-
-      - name: 📂 Make deno dir
-        run: mkdir -p ./deno
-
-      - name: 📝 Copy Remix build files into output dir
-        run: cp -R ./{build,public} ./deno
+          deno-version: v2.x
 
       - name: 🚛 Deploy to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: senarai # the name of the project on Deno Deploy
-          entrypoint: './build/index.js' # the entrypoint to deploy
-          root: './deno' # the root directory of the build assets
+        run: deno deploy --prod --json --non-interactive --org "$DENO_DEPLOY_ORG" --app "$DENO_DEPLOY_APP"
+        env:
+          DENO_DEPLOY_TOKEN: ${{ secrets.DENO_DEPLOY_TOKEN }}
+          DENO_DEPLOY_ORG: ${{ vars.DENO_DEPLOY_ORG }}
+          DENO_DEPLOY_APP: ${{ vars.DENO_DEPLOY_APP }}

@@ -1,5 +1,4 @@
 import fs from 'fs'
-import path from 'path'
 import chalk from 'chalk'
 import ora from 'ora'
 import fetch from 'cross-fetch'
@@ -68,33 +67,32 @@ export async function fetchDatabase() {
   }]
 
   fs.writeFileSync(
-    path.resolve(__dirname, '../data/senarai-db.json'),
+    new URL('../data/senarai-db.json', import.meta.url),
     JSON.stringify(sheetList)
   )
   const date = new Date()
   const monthPad = (date.getMonth() + 1).toString().padStart(2, '0')
   const datePad = date.getDate().toString().padStart(2, '0')
   fs.writeFileSync(
-    path.resolve(__dirname, '../data/timestamp.json'),
+    new URL('../data/timestamp.json', import.meta.url),
     JSON.stringify({
       lastUpdated: date.getFullYear() + '-' + monthPad + '-' + datePad,
     })
   )
 }
 
-;(function fetchSenarai() {
-  const start = process.hrtime()
-  const spinner = ora(
-    `${chalk.yellowBright('Fetching Senarai database...')}`
-  ).start()
-  fetchDatabase()
-    .then(() => {
-      const end = `${toSecond(process.hrtime(start))} seconds`
-      spinner.succeed(
-        `Fetching Senarai database is done in ${chalk.greenBright(end)}`
-      )
-    })
-    .catch((err) => {
-      chalk.red(err)
-    })
-})()
+const start = process.hrtime()
+const spinner = ora(
+  `${chalk.yellowBright('Fetching Senarai database...')}`
+).start()
+
+try {
+  await fetchDatabase()
+  const end = `${toSecond(process.hrtime(start))} seconds`
+  spinner.succeed(
+    `Fetching Senarai database is done in ${chalk.greenBright(end)}`
+  )
+} catch (error) {
+  spinner.fail(chalk.red('Fetching Senarai database failed'))
+  throw error
+}
