@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$repo_root"
+
+echo "Installing locked npm dependencies..."
+npm ci
+
+deno_install="$HOME/.deno"
+if ! command -v deno >/dev/null 2>&1 && [[ ! -x "$deno_install/bin/deno" ]]; then
+  echo "Installing Deno..."
+  curl -fsSL https://deno.land/install.sh | DENO_INSTALL="$deno_install" sh
+fi
+
+profile_marker="# senar.ai Deno"
+if ! grep -Fqx "$profile_marker" "$HOME/.bash_profile" 2>/dev/null; then
+  cat >> "$HOME/.bash_profile" <<'EOF'
+
+# senar.ai Deno
+export DENO_INSTALL="$HOME/.deno"
+case ":$PATH:" in
+  *":$DENO_INSTALL/bin:"*) ;;
+  *) export PATH="$DENO_INSTALL/bin:$PATH" ;;
+esac
+EOF
+fi
+export DENO_INSTALL="$deno_install"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+echo "Caching Deno dependencies..."
+deno cache --lock=deno.lock https://deno.land/std@0.128.0/http/server.ts
+
+if [[ ! -f .env ]]; then
+  echo "Creating .env from .env.example..."
+  cp -- .env.example .env
+fi
+
+echo "Fetching application data..."
+npm run fetch
+
+echo "Orb setup complete."
