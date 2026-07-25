@@ -1,0 +1,6 @@
+services:
+  web:
+    command: npm run dev
+    portal:
+      title: Senarai
+      description: Learning resources directory development server.
