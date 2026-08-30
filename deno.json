@@ -1,5 +1,7 @@
 {
   "deploy": {
+    "org": "senar-ai",
+    "app": "senarai",
     "install": "npm ci",
     "build": "npm run build",
     "runtime": {
