@@ -1,6 +1,7 @@
 {
   "name": "senar.ai",
   "private": true,
+  "type": "commonjs",
   "sideEffects": false,
   "prisma": {
     "seed": "node --require esbuild-register prisma/seed.ts"
