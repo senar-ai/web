@@ -8,19 +8,18 @@
     "build": "node site/build.ts",
     "dev": "npm run build && wrangler dev",
     "deploy": "wrangler deploy",
-    "test": "node --experimental-strip-types --test site/redirect.test.ts",
+    "test": "node --test site/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
-    "cheerio": "1.2.0"
-  },
   "devDependencies": {
-    "@types/node": "24.12.4",
-    "tailwindcss": "3.4.19",
+    "@tailwindcss/node": "4.3.3",
+    "@tailwindcss/oxide": "4.3.3",
+    "@types/node": "26.6.5",
+    "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
-    "wrangler": "4.151.0"
+    "wrangler": "4.151.1"
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=26"
   }
 }

@@ -1,6 +1,6 @@
 services:
   web:
-    command: npm run dev
+    command: npm run build && npx wrangler dev --ip 127.0.0.1 --port "$PORT"
     portal:
       title: Senarai
-      description: Learning resources directory development server.
+      description: Static site and /go redirect Worker, served by local Wrangler.

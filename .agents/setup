@@ -4,36 +4,25 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-echo "Installing locked npm dependencies..."
-npm ci
+step() {
+  echo "[$(date +%T)] $*"
+}
 
-deno_install="$HOME/.deno"
-if ! command -v deno >/dev/null 2>&1 && [[ ! -x "$deno_install/bin/deno" ]]; then
-  echo "Installing Deno..."
-  curl -fsSL https://deno.land/install.sh | DENO_INSTALL="$deno_install" sh
+required_major="$(cat .nvmrc)"
+node_major="$(node -p 'process.versions.node.split(".")[0]')"
+if (( node_major < required_major )); then
+  echo "Node $required_major or later is required; found $(node -v)." >&2
+  exit 1
 fi
 
-profile_marker="# senar.ai Deno"
-if ! grep -Fqx "$profile_marker" "$HOME/.bash_profile" 2>/dev/null; then
-  cat >> "$HOME/.bash_profile" <<'EOF'
+step "Installing locked npm dependencies..."
+npm ci --no-audit --no-fund
 
-# senar.ai Deno
-export DENO_INSTALL="$HOME/.deno"
-case ":$PATH:" in
-  *":$DENO_INSTALL/bin:"*) ;;
-  *) export PATH="$DENO_INSTALL/bin:$PATH" ;;
-esac
-EOF
-fi
-export DENO_INSTALL="$deno_install"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-if [[ ! -f .env ]]; then
-  echo "Creating .env from .env.example..."
-  cp -- .env.example .env
+step "Fetching Sheet data..."
+# The site cannot build without this data, but a Sheet outage must not stop
+# the orb from starting. Run `npm run fetch` again later.
+if ! npm run fetch; then
+  echo "Warning: Sheet fetch failed. Run 'npm run fetch' before 'npm run build'." >&2
 fi
 
-echo "Fetching application data..."
-npm run fetch
-
-echo "Orb setup complete."
+step "Orb setup complete."
