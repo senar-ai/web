@@ -1,7 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' source(none);
+@source '../site';
+@source '../app/model';
+@import './v3-colors.css';
+
+/*
+  Tailwind lists emoji fonts in the default sans stack. On Linux Chromium
+  without the named system fonts, the emoji font then draws spaces and
+  digits. Emoji still render through the system font fallback.
+*/
+@theme {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 [hidden] {
   display: none !important;
+}
+
+/* Tailwind CSS v4 gives buttons the default cursor. Keep the v3 pointer. */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
 }

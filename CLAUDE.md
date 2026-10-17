@@ -10,7 +10,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run build` - Print static HTML into `dist/`
 - `npm run fetch` - Fetch the Google Sheet into `app/data/`
 - `npm run deploy` - Upload `dist/` with Wrangler
-- `npm test` - Run short-link redirect tests
+- `npm test` - Run short-link redirect and Sheet CSV tests
+- `npm run typecheck` - Type-check `site/` and `worker/`
 
 ### Deployment
 
@@ -22,14 +23,14 @@ This is a static learning resources directory ("Senarai"). Key architectural pat
 
 ### Tech Stack
 
-- **Runtime**: Node.js 24
+- **Runtime**: Node.js 26
 - **Site**: static HTML printed by `site/build.ts`
 - **Hosting**: Cloudflare Workers static assets, plus a `/go` redirect Worker
-- **Styling**: Tailwind CSS 3
+- **Styling**: Tailwind CSS 4, compiled by `site/build.ts`, with the Tailwind 3 colors in `site/v3-colors.css`
 
 ### Project Structure
 
-- `site/` - HTML printer, sheet fetch, and browser search
+- `site/` - HTML printer, Sheet fetch and CSV parser, and browser search
 - `worker/` - `/go` redirect handler
 - `app/model/` - Category list and activity types
 - `app/data/` - Sheet JSON used by the printer
@@ -51,8 +52,8 @@ FontAwesome icons via SVG sprites:
 
 ## Important Notes
 
-- This uses **Node.js 24**, not Deno
+- This uses **Node.js 26**, not Deno
 - Page HTML is printed at build time. Do not add a request-time framework
 - The Worker in `worker/index.ts` handles `/go` redirects only
-- Database fetching happens via an external Google Sheet
+- Database fetching happens via an external Google Sheet. `site/sheet.ts` rejects an export that is not valid, so a bad export never replaces the data or deploys
 - The site is a learning resources directory

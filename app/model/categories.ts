@@ -8,6 +8,7 @@ export type Category = {
   iconId: string
   iconForeground: string
   iconBackground: string
+  linkHover: string
 }
 
 export const categories: Categories = [
@@ -18,6 +19,7 @@ export const categories: Categories = [
     iconId: 'child-reaching',
     description: 'Pendidikan Anak Usia Dini',
     iconForeground: 'text-teal-700',
+    linkHover: 'hover:text-teal-700/75',
     iconBackground: 'bg-teal-50',
   },
   {
@@ -27,6 +29,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'child-reaching',
     iconForeground: 'text-teal-700',
+    linkHover: 'hover:text-teal-700/75',
     iconBackground: 'bg-teal-50',
   },
   {
@@ -36,6 +39,7 @@ export const categories: Categories = [
     iconSet: 'light',
     iconId: 'school',
     iconForeground: 'text-purple-700',
+    linkHover: 'hover:text-purple-700/75',
     iconBackground: 'bg-purple-50',
   },
   {
@@ -45,6 +49,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'school',
     iconForeground: 'text-purple-700',
+    linkHover: 'hover:text-purple-700/75',
     iconBackground: 'bg-purple-50',
   },
   {
@@ -54,6 +59,7 @@ export const categories: Categories = [
     iconSet: 'light',
     iconId: 'school-flag',
     iconForeground: 'text-sky-700',
+    linkHover: 'hover:text-sky-700/75',
     iconBackground: 'bg-sky-50',
   },
   {
@@ -63,6 +69,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'school-flag',
     iconForeground: 'text-sky-700',
+    linkHover: 'hover:text-sky-700/75',
     iconBackground: 'bg-sky-50',
   },
   {
@@ -72,6 +79,7 @@ export const categories: Categories = [
     iconSet: 'light',
     iconId: 'building-columns',
     iconForeground: 'text-yellow-700',
+    linkHover: 'hover:text-yellow-700/75',
     iconBackground: 'bg-yellow-50',
   },
   {
@@ -81,6 +89,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'building-columns',
     iconForeground: 'text-yellow-700',
+    linkHover: 'hover:text-yellow-700/75',
     iconBackground: 'bg-yellow-50',
   },
   {
@@ -90,6 +99,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'graduation-cap',
     iconForeground: 'text-indigo-700',
+    linkHover: 'hover:text-indigo-700/75',
     iconBackground: 'bg-indigo-50',
   },
   {
@@ -99,6 +109,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'briefcase',
     iconForeground: 'text-rose-700',
+    linkHover: 'hover:text-rose-700/75',
     iconBackground: 'bg-rose-50',
   },
   {
@@ -108,6 +119,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'people-group',
     iconForeground: 'text-lime-700',
+    linkHover: 'hover:text-lime-700/75',
     iconBackground: 'bg-lime-50',
   },
   {
@@ -117,6 +129,7 @@ export const categories: Categories = [
     iconSet: 'duotone',
     iconId: 'family',
     iconForeground: 'text-emerald-700',
+    linkHover: 'hover:text-emerald-700/75',
     iconBackground: 'bg-emerald-50',
   },
 ]
@@ -133,6 +146,7 @@ const uncategorized: Category = {
   iconSet: 'duotone',
   iconId: 'person-chalkboard',
   iconForeground: 'text-amber-700',
+  linkHover: 'hover:text-amber-700/75',
   iconBackground: 'bg-amber-50',
 }
 

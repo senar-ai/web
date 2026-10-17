@@ -1,10 +1,7 @@
-/* eslint-disable-next-line import/no-unresolved */
-import database from '../data/senarai-db.json' with { type: 'json' }
-
 export type Activities = Activity[]
 
 export type Activity = {
-  readonly id: number
+  readonly id: string
   readonly usia: string
   readonly categorySlug: string
   readonly nama: string
@@ -19,5 +16,3 @@ export type Activity = {
   readonly benua: string
   readonly image?: string
 }
-
-export const activities = database[0].data as unknown as Activities

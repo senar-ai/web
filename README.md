@@ -4,7 +4,7 @@ A static directory of learning activities. Node prints the HTML. Cloudflare serv
 
 ## Install
 
-Use Node 24.
+Use Node 26 (see `.nvmrc`).
 
 ```sh
 npm install
@@ -27,7 +27,7 @@ npm run build
 npm run deploy
 ```
 
-`npm run fetch` downloads the Google Sheet. It exits without writing files when the sheet response is empty or not OK. `npm run deploy` uploads `dist/` with Wrangler.
+`npm run fetch` downloads the Google Sheet as CSV. It exits without writing files when the response is not OK, is not CSV, does not have the `Usia`, `Nama`, `Ringkasan`, and `Link` columns, or has no named activity. `npm run deploy` uploads `dist/` with Wrangler.
 
 ## Deployment
 
@@ -35,16 +35,26 @@ The site is Cloudflare Workers static assets. Page requests match files in `dist
 
 Set these GitHub Actions secrets before the scheduled workflow can deploy:
 
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN`: an API token on the account that owns the `senar.ai` zone, with **Account › Workers Scripts › Edit** and **Zone › Workers Routes › Edit** for `senar.ai`. The Cloudflare "Edit Cloudflare Workers" token template has these permissions.
+- `CLOUDFLARE_ACCOUNT_ID`: the ID of that account.
+
+`wrangler.jsonc` does not attach `senar.ai` yet. The apex still points at Deno Deploy. After the `workers.dev` deployment is verified, remove the Deno DNS records and add the custom domain to `wrangler.jsonc`:
+
+```jsonc
+"routes": [{ "pattern": "senar.ai", "custom_domain": true }]
+```
 
 The `Scheduled Deploy` workflow runs at 09:17 UTC. It fetches the sheet, builds, and runs `wrangler deploy`. A failed fetch does not deploy.
+
+## Styles
+
+Tailwind CSS 4 compiles `site/styles.css` during `npm run build`. Tailwind scans `site/` and `app/model/` only. `site/v3-colors.css` keeps the Tailwind 3 color values, so the pages look the same as before the upgrade.
 
 ## Useful resources
 
 ### How to use FontAwesome in the project
 
-This project uses **SVG sprites** with FontAwesome icons through a custom `<Icon />` component system.
+This project uses **SVG sprites** with FontAwesome icons. The `icon()` helper in `site/html.ts` prints an SVG `<use>` element.
 
 #### Adding New Icons
 
@@ -53,7 +63,7 @@ This project uses **SVG sprites** with FontAwesome icons through a custom `<Icon
    [senarai](https://fontawesome.com/kits/5899c9809d/icons) icon kit. (please
    ask @zainfathoni to do it for you)
 3. Upload the new SVG sprites to the `/public/images/` directory
-4. Use the `<Icon />` component and pass the icon set and id as props
+4. Call `icon(set, id, className)` in `site/pages.ts`
 
 #### Usage
 
