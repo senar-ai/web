@@ -1,4 +1,4 @@
-name: 🧪 Lint & Test
+name: Test
 on:
   push:
     branches: [main]
@@ -6,29 +6,28 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  lint:
-    name: 🔬 Lint
-    if:
-      # ignore all-contributors PRs
-      ${{ github.repository == 'senar-ai/web' && !contains(github.head_ref,
-      'all-contributors') }}
+  test:
+    name: Typecheck and test
+    if: github.repository == 'senar-ai/web' && !contains(github.head_ref, 'all-contributors')
     runs-on: ubuntu-latest
     steps:
-      - name: 🐑 Clone repository
-        uses: actions/checkout@v3
+      - name: Clone repository
+        uses: actions/checkout@v4
 
-      - name: 🦀 Setup Node
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 24
+          cache: npm
 
-      - name: ⛓ Install Node deps
-        uses: bahmutov/npm-install@v1
+      - name: Install dependencies
+        run: npm ci
 
-      - name: 🦕 Setup Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+      - name: Typecheck
+        run: npm run typecheck
 
-      - name: 🔬 Lint
-        run: npm run lint
+      - name: Test
+        run: npm test
+
+      - name: Build
+        run: npm run build

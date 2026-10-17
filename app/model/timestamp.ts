@@ -1,5 +1,5 @@
 /* eslint-disable-next-line import/no-unresolved */
-import timestamp from '../data/timestamp.json'
+import timestamp from '../data/timestamp.json' with { type: 'json' }
 
 export type Timestamp = {
   readonly lastUpdated: string

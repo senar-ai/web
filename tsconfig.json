@@ -1,4 +1,14 @@
 {
-  "extends": "./node_modules/pkode/base-tsconfig.json",
-  "include": ["remix.env.d.ts", "app/**/*.ts", "app/**/*.tsx"]
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "lib": ["ES2024", "DOM"]
+  },
+  "include": ["site/**/*.ts", "worker/**/*.ts"]
 }

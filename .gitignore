@@ -2,10 +2,12 @@ node_modules
 
 /.cache
 /build
+/dist
 /public/build
 .env
 
 /app/tailwind.css
+.wrangler
 
 # Prisma
 /prisma/dev.db

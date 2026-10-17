@@ -1,5 +1,5 @@
-import { load } from 'cheerio'
-import { getKebabCase, stripTags, toSnakeCase } from './string'
+import * as cheerio from 'cheerio'
+import { getKebabCase, stripTags, toSnakeCase } from './string.ts'
 
 export interface SheetColumn {
   name: string
@@ -7,7 +7,7 @@ export interface SheetColumn {
 }
 
 export const extractGoogleQuery = (value: string): string => {
-  const $ = load(value)
+  const $ = cheerio.load(value)
   const links = $('a')
   links.each((_, link): void => {
     const el = $(link)

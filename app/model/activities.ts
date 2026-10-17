@@ -1,5 +1,5 @@
 /* eslint-disable-next-line import/no-unresolved */
-import database from '../data/senarai-db.json'
+import database from '../data/senarai-db.json' with { type: 'json' }
 
 export type Activities = Activity[]
 
